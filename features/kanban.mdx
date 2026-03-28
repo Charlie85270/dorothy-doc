@@ -1,0 +1,137 @@
+---
+title: "Kanban Board"
+description: "Visual task management with automatic agent assignment"
+icon: "table-columns"
+---
+
+## What is a Kanban Board?
+
+A Kanban board is a visual way to organize work. It uses **columns** to show the status of each task, so you can see at a glance what is waiting, what is in progress, and what is done. If you have ever used Trello, Notion boards, or sticky notes on a wall, you already understand the concept.
+
+Dorothy's Kanban board adds a twist: it can **automatically assign tasks to your AI agents** based on their skills.
+
+## Why Use the Kanban Board?
+
+<CardGroup cols={3}>
+  <Card title="Visual Clarity" icon="eye">
+    See all your tasks laid out in columns. Know instantly what is pending, in progress, or complete.
+  </Card>
+  <Card title="Auto-Assignment" icon="wand-magic-sparkles">
+    Move a task to "Planned" and Dorothy finds an idle agent with the right skills to handle it -- automatically.
+  </Card>
+  <Card title="Agent Integration" icon="robot">
+    Agents can create and update tasks themselves via MCP tools, so the board stays in sync with real progress.
+  </Card>
+</CardGroup>
+
+## The Four Columns
+
+Dorothy's Kanban board uses four columns:
+
+| Column | Purpose |
+|--------|---------|
+| **Backlog** | Ideas and tasks you have not started planning yet. A parking lot for future work. |
+| **Planned** | Tasks that are ready to be worked on. Moving a task here can trigger auto-assignment. |
+| **Ongoing** | Tasks that an agent is actively working on right now. |
+| **Done** | Completed tasks. Review and archive them when you are ready. |
+
+## How to Use the Kanban Board
+
+### Creating a Task
+
+<Steps>
+  <Step title="Open the Kanban board">
+    Click **Kanban** in the sidebar.
+  </Step>
+  <Step title="Click 'New Task'">
+    A form opens where you can define the task.
+  </Step>
+  <Step title="Fill in the details">
+
+    | Field | Description | Required |
+    |-------|-------------|----------|
+    | **Title** | A short, clear name for the task (e.g., "Add login page") | Yes |
+    | **Description** | Detailed instructions for what needs to be done | No |
+    | **Priority** | Low, Medium, or High | No |
+    | **Skills** | Tags that describe what expertise this task requires (e.g., "react", "api", "testing") | No |
+  </Step>
+  <Step title="Save the task">
+    The task appears in the **Backlog** column by default.
+  </Step>
+</Steps>
+
+### Moving Tasks
+
+**Drag and drop** any task card from one column to another. For example:
+
+- Drag from **Backlog** to **Planned** when you are ready to start the work
+- Drag from **Planned** to **Ongoing** to mark it as in progress
+- Drag from **Ongoing** to **Done** when the work is complete
+
+### Priority Levels
+
+Each task can have a priority level to help you focus on what matters most:
+
+| Priority | When to Use |
+|----------|-------------|
+| **High** | Urgent tasks that need immediate attention |
+| **Medium** | Important tasks with a normal timeline |
+| **Low** | Nice-to-have tasks that can wait |
+
+### Progress Tracking
+
+Each task has a **progress bar** (0--100%) that shows how far along the work is. This can be updated manually, or agents can update it automatically via MCP tools as they make progress.
+
+## Skill-Based Auto-Assignment
+
+This is one of Dorothy's most powerful features. Here is how it works:
+
+1. You create a task with **skills** (e.g., "react", "typescript")
+2. You move the task to the **Planned** column
+3. Dorothy looks for an **idle agent** that has matching skills
+4. If it finds one, it automatically assigns the task to that agent and starts it
+
+<Tip>
+  For auto-assignment to work, make sure your agents have skills configured. You can set skills when [creating an agent](/features/agents).
+</Tip>
+
+### Auto-Spawn
+
+If no existing agent has the right skills, Dorothy can **automatically create a new agent** for the task. This means you can add tasks to the board without worrying about whether an agent exists to handle them -- Dorothy will spin one up as needed.
+
+## MCP Integration
+
+Agents can interact with the Kanban board directly through MCP tools. This means an agent can:
+
+- **Create tasks** when it discovers work that needs to be done
+- **Update progress** as it completes parts of a task
+- **Mark tasks as done** when the work is finished
+- **Move tasks** between columns
+
+This keeps the board in sync with what your agents are actually doing, without you needing to update it manually.
+
+<Note>
+  For the full list of Kanban MCP tools, see the [MCP Kanban Reference](/reference/mcp-kanban).
+</Note>
+
+## Tips and Best Practices
+
+<Accordion title="Use skills to match tasks to agents">
+  The more specific your skills are, the better auto-assignment works. Instead of just "frontend", use "react", "css", or "accessibility" to make sure the right agent picks up the right work.
+</Accordion>
+
+<Accordion title="Write clear task descriptions">
+  The task description becomes the prompt that the agent receives. Write it as if you were instructing a developer: be specific about what needs to happen, where the code lives, and what the expected outcome is.
+</Accordion>
+
+<Accordion title="Use priority to manage agent workload">
+  When multiple tasks are in the Planned column, higher-priority tasks are more likely to be picked up first. Use this to ensure critical work gets done before nice-to-haves.
+</Accordion>
+
+<Accordion title="Let agents update their own progress">
+  If your agents have the Kanban MCP tools enabled, they can update task progress as they work. This gives you a live view of how things are going without needing to check each agent's terminal output.
+</Accordion>
+
+<Accordion title="Combine with the Super Agent">
+  The [Super Agent](/features/super-agent) can create Kanban tasks and assign them to agents as part of its orchestration. This gives you a visual record of everything the Super Agent is doing.
+</Accordion>

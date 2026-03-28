@@ -1,0 +1,68 @@
+---
+title: "Telegram Bot"
+description: "Control your agents remotely from Telegram"
+icon: "paper-plane"
+---
+
+Dorothy includes a built-in Telegram bot that lets you control your agents from your phone or any Telegram client. Start tasks, check on progress, and get notifications without being at your computer.
+
+## Why Use the Telegram Bot?
+
+- **Manage agents on the go** -- start, stop, and monitor agents from anywhere
+- **Get notifications** -- know when agents finish tasks or run into errors
+- **Start tasks remotely** -- kick off new work from your phone
+- **Send media to agents** -- share photos, videos, and documents directly
+
+## Setting Up
+
+<Steps>
+  <Step title="Create a bot with BotFather">
+    Open Telegram and search for **@BotFather**. Start a chat and send `/newbot`. Follow the prompts to name your bot and choose a username for it.
+  </Step>
+  <Step title="Copy the bot token">
+    BotFather will give you an API token. Copy this token -- you will need it in the next step.
+  </Step>
+  <Step title="Add the token to Dorothy">
+    In Dorothy, go to **Settings → Telegram** and paste your bot token into the token field.
+  </Step>
+  <Step title="Get your Telegram user ID">
+    Search for **@userinfobot** on Telegram and start a chat. It will reply with your user ID number.
+  </Step>
+  <Step title="Authorize your user ID">
+    In Dorothy's Telegram settings, add your user ID to the **Authorized Users** list. This ensures only you can control your agents.
+  </Step>
+  <Step title="Test the connection">
+    Open a chat with your new bot on Telegram and send `/status`. You should see a list of your agents and their current state.
+  </Step>
+</Steps>
+
+## Available Commands
+
+| Command | Description |
+|---------|-------------|
+| `/status` | See all agents and their current state |
+| `/start_agent <name> <prompt>` | Start an agent with a given prompt |
+| `/stop_agent <name>` | Stop a running agent |
+| `/ask <name> <message>` | Send a message to a running agent |
+
+### Sending Media
+
+You can send photos, videos, and documents directly to agents through the Telegram bot. Simply send the media file in your chat with the bot, and it will be forwarded to the active agent.
+
+## Multi-User Access
+
+You can add multiple user IDs to the **Authorized Users** list, allowing team members to control agents from their own Telegram accounts.
+
+<Note>
+Each authorized user has full control over all agents. There are no per-user permission levels within the Telegram integration.
+</Note>
+
+## Agent-to-Telegram Messaging
+
+Agents can also send messages **to** Telegram using MCP tools. This is useful for notifications, progress updates, or sending results directly to your chat.
+
+For details on the available MCP tools, see the [Telegram MCP reference](/reference/mcp-telegram).
+
+<Tip>
+Set up Telegram notifications for when agents complete tasks or encounter errors. This way you stay informed without having to manually check on each agent.
+</Tip>

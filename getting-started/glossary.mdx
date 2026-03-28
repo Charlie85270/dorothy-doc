@@ -1,0 +1,109 @@
+---
+title: "Glossary"
+description: "Plain-language definitions of all technical terms used in Dorothy"
+icon: "book"
+---
+
+A reference guide to every technical term you might encounter while using Dorothy. Each definition is written in plain language -- no prior coding experience required.
+
+---
+
+### Agent
+
+An AI assistant that can read, write, and modify code. In Dorothy, each agent runs in its own terminal window and can work independently on a task. Think of an agent as a virtual developer you can assign work to.
+
+### API Key
+
+A unique code (like a password) that identifies you to an external service. Some integrations (like Twitter/X or SocialData) require API keys. For AI providers, Dorothy uses CLI subscriptions instead — you log in with your account (e.g., Claude Pro, ChatGPT Pro) and no API key is needed.
+
+### Automation
+
+A rule that tells Dorothy to do something automatically when a specific event happens. For example, you could set up an automation that says: "When a new GitHub issue is created, assign an agent to fix it." Automations save you from manually starting agents for repetitive tasks.
+
+### CLI (Command-Line Interface)
+
+A text-based way to interact with software by typing commands instead of clicking buttons. AI coding tools like Claude Code, Codex, and Gemini CLI all run as CLI programs. When you type a command in your Mac's Terminal app, you're using a CLI.
+
+### Context Window
+
+The amount of text an AI model can "remember" during a single conversation. Think of it like the model's working memory. A larger context window means the agent can read and work with more code at once. If a context window is too small, the agent might "forget" parts of a large codebase.
+
+### Cron / Cron Expression
+
+A scheduling format that defines when a task should run automatically. For example, "every day at 9 AM" or "every Monday at noon." The name comes from a decades-old Unix scheduling tool. In Dorothy, cron expressions power scheduled automations.
+
+### Electron
+
+The technology that lets Dorothy run as a desktop application on your Mac. Electron allows developers to build desktop apps using web technologies. You don't need to know anything about Electron unless you're building Dorothy from source.
+
+### FTS (Full-Text Search)
+
+A search technique that looks through the entire content of documents -- not just their titles or file names. Dorothy's Vault uses full-text search so you can find documents by searching for any word or phrase they contain.
+
+### Git Worktree
+
+A feature of the Git version control system that lets you work on multiple branches of a code project simultaneously, each in its own folder. Dorothy can use git worktrees to let multiple agents work on separate branches of the same project at the same time, without their changes conflicting with each other.
+
+### IPC (Inter-Process Communication)
+
+How different parts of the Dorothy app talk to each other internally. This is a behind-the-scenes technical detail -- you don't need to worry about it during normal use.
+
+### Kanban
+
+A visual project management method that uses columns (like "To Do", "In Progress", and "Done") and cards that move between them. Dorothy includes a built-in Kanban board where you can organize tasks and assign agents to work on them.
+
+### LLM (Large Language Model)
+
+The AI technology that powers coding agents. LLMs are trained on vast amounts of text and code, which allows them to understand and generate human language and programming code. Examples include Claude (by Anthropic), GPT (by OpenAI), Gemini (by Google), and Llama (by Meta).
+
+### MCP (Model Context Protocol)
+
+A standard way for AI agents to use external tools and services. Think of it as a universal adapter that lets agents plug into different capabilities -- like managing tasks on a Kanban board, sending messages, or storing documents in the Vault. Dorothy uses MCP servers behind the scenes to give agents these abilities.
+
+### NPC (Non-Player Character)
+
+In Dorothy's game world (Pallet Town), NPCs represent your agents as characters you can interact with. This is part of Dorothy's unique visual interface that presents your AI agents in a playful, game-like environment.
+
+### Ollama
+
+Software that lets you run AI models locally on your own computer, without sending any data to the cloud. This is useful for privacy-sensitive work or when you want to avoid per-usage costs. Ollama is free and supports many open-source AI models.
+
+### Plugin
+
+An add-on that gives Dorothy extra capabilities beyond what it ships with out of the box. For example, a plugin might connect Dorothy to a specific programming language server or integrate with an external tool.
+
+### Provider
+
+An AI service that Dorothy can connect to. Each provider offers different AI models. The supported providers are:
+- **Anthropic** -- for Claude models
+- **OpenAI** -- for Codex / GPT models
+- **Google** -- for Gemini models
+- **Ollama** -- for locally-run open-source models
+
+### PTY (Pseudo-Terminal)
+
+A virtual terminal that Dorothy creates for each agent. It works just like a real terminal window (the kind you'd open on your Mac) but runs inside the Dorothy app. This is how each agent gets its own isolated workspace.
+
+### Skill
+
+A specialized instruction set that you can attach to an agent to give it expertise in a specific area. For example, you might attach a "React development" skill to an agent working on a React project, or an "SEO optimization" skill to one writing web content. Skills help agents perform more accurately on specific types of tasks.
+
+### Super Agent
+
+A special type of agent in Dorothy that acts as a manager. A Super Agent can create, start, stop, and coordinate other agents. Instead of doing coding work itself, it delegates tasks to worker agents and oversees their progress -- like a team lead managing a group of developers.
+
+### Token
+
+The basic unit that AI models use to process text. Think of tokens as small chunks of text -- roughly 1 token equals about 4 characters or three-quarters of a word. AI usage and pricing are typically measured in tokens. For example, the sentence "Hello, how are you?" is about 6 tokens.
+
+### Vault
+
+Dorothy's built-in document storage system. Agents can save and retrieve documents, notes, and files in the Vault. It supports full-text search, so you can quickly find anything stored there. Think of it as a shared filing cabinet that all your agents can access.
+
+### Webhook
+
+A way for one service to automatically notify another when something happens. For example, GitHub can send a webhook to Dorothy whenever a new issue is created, which can then trigger an automation. Think of it as a doorbell -- when someone presses it (an event happens), your house (Dorothy) knows to respond.
+
+### Zone
+
+A playable area in Dorothy's game world (Pallet Town). Each zone has its own map, NPCs (which represent your agents), and interactive elements. Zones are part of Dorothy's unique visual interface that makes managing AI agents feel more engaging and fun.

@@ -1,0 +1,68 @@
+---
+title: "Dashboard"
+description: "Your command center for monitoring all agent activity"
+icon: "chart-mixed"
+---
+
+The Dashboard is the first thing you see when you open Dorothy. It gives you a complete picture of what all your agents are doing, how much they're costing, and which projects have active work.
+
+## Activity Feed
+
+The activity feed is a real-time log of everything your agents are doing. Each entry shows which agent performed an action, what it did, and when. This is the fastest way to stay in the loop without switching between individual agent views.
+
+## Agent Status Overview
+
+At the top of the Dashboard, you'll see an at-a-glance summary of all your agents grouped by their current state:
+
+| Status | What It Means |
+|--------|---------------|
+| **Running** | The agent is actively working on a task |
+| **Idle** | The agent is online but not doing anything |
+| **Completed** | The agent finished its task |
+| **Error** | Something went wrong and the agent needs attention |
+
+Click any agent in the overview to jump directly to its terminal view.
+
+## Token Usage Charts
+
+A visual breakdown showing how many tokens each agent has consumed. This helps you spot which agents are using the most resources and whether any are running up costs unexpectedly.
+
+<Tip>
+If you see one agent using far more tokens than others, it might have an overly broad prompt. Narrowing the prompt to a specific task usually reduces token usage significantly.
+</Tip>
+
+## Project Overview
+
+See which of your projects have active agents working on them. Each project card shows the number of running agents and their current status, so you can tell at a glance where the action is.
+
+## Menu Bar Tray (macOS)
+
+Dorothy lives in your Mac's menu bar, giving you live agent status without needing to open the full app. Agents are grouped by status:
+
+- **Working** -- agents actively processing a task
+- **Waiting** -- agents that need your input (e.g., a permission request)
+- **Ready** -- agents that are set up but not started
+- **Idle** -- agents with no current task
+
+Click any agent in the tray to jump to it in the main window.
+
+## Customizable Layout
+
+You can rearrange the Dashboard widgets to match your workflow. Drag and resize panels to put the information you care about front and center.
+
+<Tip>
+If you have a secondary monitor, keep the Dashboard open on it for real-time oversight while you work in your code editor on the primary screen.
+</Tip>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Usage & Costs" icon="chart-line" href="/features/usage-tracking">
+    Dive deeper into token consumption and cost tracking.
+  </Card>
+  <Card title="Canvas View" icon="diagram-project" href="/features/canvas">
+    See your agents as a visual node graph instead of a list.
+  </Card>
+</CardGroup>

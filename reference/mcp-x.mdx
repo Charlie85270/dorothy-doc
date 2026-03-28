@@ -1,0 +1,52 @@
+---
+title: "X / Twitter Tools"
+description: "MCP tools for posting and managing tweets"
+icon: "twitter"
+---
+
+The X (Twitter) MCP server lets agents post, reply to, and delete tweets. This is useful for automated social media workflows, announcements, and engagement.
+
+<Warning>
+Automated posting should always be reviewed. Use these tools responsibly and in compliance with X's terms of service.
+</Warning>
+
+<Note>
+These tools require X API credentials configured in **Settings**. See the X / Twitter integration guide for setup instructions.
+</Note>
+
+## Tools
+
+### `x_post_tweet`
+
+Post a new tweet.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `text` | string | Yes | Tweet text (maximum 280 characters) |
+
+**When to use:** When an agent needs to share an update, announcement, or content on X.
+
+---
+
+### `x_reply_tweet`
+
+Reply to an existing tweet.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `tweetId` | string | Yes | The ID of the tweet to reply to |
+| `text` | string | Yes | Reply text (maximum 280 characters) |
+
+**When to use:** When an agent needs to respond to a specific tweet — for example, answering a question or engaging with a user.
+
+---
+
+### `x_delete_tweet`
+
+Delete a tweet.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `tweetId` | string | Yes | The ID of the tweet to delete |
+
+**When to use:** When a tweet was posted in error or needs to be removed.

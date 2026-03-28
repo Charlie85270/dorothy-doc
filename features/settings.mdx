@@ -1,0 +1,97 @@
+---
+title: "Settings"
+description: "Configure Dorothy to work exactly the way you want"
+icon: "gear"
+---
+
+The Settings page lets you customize how Dorothy behaves, which tools it uses, and how your agents interact with the outside world. Open it by clicking the **gear icon** in the sidebar.
+
+<Tip>
+Start with **CLI Paths** and **Permissions** -- these are the two settings that affect whether your agents can run at all. Everything else can be adjusted later as you explore.
+</Tip>
+
+## CLI Paths
+
+Tell Dorothy where to find your AI coding tools on your Mac. Dorothy needs to know the file path to each CLI so it can launch agents with the right provider.
+
+| Provider | Example Path |
+|----------|-------------|
+| **Claude Code** | `/usr/local/bin/claude` |
+| **Codex** | `/usr/local/bin/codex` |
+| **Gemini CLI** | `/usr/local/bin/gemini` |
+| **Ollama** | `/usr/local/bin/ollama` |
+
+<Note>
+Dorothy usually auto-detects these paths if you installed the tools globally. Check that the path fields are filled in -- if they are, no action needed.
+</Note>
+
+## Permissions
+
+Control what your agents are allowed to do. This is where you set boundaries for file access, command execution, and other potentially sensitive operations. Tighter permissions mean agents will ask for approval more often; looser permissions let them work more autonomously.
+
+## Environment Variables
+
+Set environment variables that your agents can access during their sessions. This is useful for API keys, configuration values, or any other data your agents need that shouldn't be hardcoded in prompts.
+
+<Warning>
+Environment variables may be visible to agents. Avoid storing highly sensitive credentials here unless you trust the agent's access level.
+</Warning>
+
+## Git Configuration
+
+Configure Git-related settings for agent worktrees. This controls how Dorothy sets up isolated Git branches for agents that work in parallel on the same repository.
+
+## Model Preferences
+
+Set the default AI model for new agents. When you create a new agent, it will use this model unless you override it. This saves time if you mostly use the same model.
+
+## Notification Sounds
+
+Customize the sounds Dorothy plays for different events:
+
+- **Agent completed** -- an agent finished its task
+- **Error** -- something went wrong
+- **Permission request** -- an agent is waiting for your approval
+
+You can use Dorothy's built-in sounds or provide your own custom MP3 files.
+
+## Status Line
+
+Configure what information appears in the agent status line. You can toggle each piece of information on or off:
+
+| Field | What It Shows |
+|-------|---------------|
+| **Model** | Which AI model the agent is using |
+| **Context usage** | How much of the model's context window is filled |
+| **Git branch** | The current Git branch the agent is working on |
+| **Session time** | How long the current session has been running |
+| **Token stats** | Input/output token counts for the session |
+
+## External MCP Servers
+
+Add third-party MCP (Model Context Protocol) servers that your agents can use. MCP servers give agents access to external tools and data sources beyond what Dorothy provides out of the box.
+
+## Telegram Bot
+
+Connect Dorothy to Telegram so you can monitor and control your agents from your phone. Enter your Telegram bot token and authorized user IDs here.
+
+For full setup instructions, see [Telegram Integration](/integrations/telegram).
+
+## Slack Integration
+
+Connect Dorothy to your Slack workspace for agent notifications and control. Enter your Slack app credentials here.
+
+For full setup instructions, see [Slack Integration](/integrations/slack).
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Prerequisites" icon="clipboard-check" href="/getting-started/prerequisites">
+    Make sure you have the required CLI tools installed before configuring paths.
+  </Card>
+  <Card title="AI Providers" icon="microchip" href="/integrations/providers">
+    Learn about the different AI providers Dorothy supports.
+  </Card>
+</CardGroup>

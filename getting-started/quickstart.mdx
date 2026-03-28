@@ -1,0 +1,85 @@
+---
+title: "Quickstart"
+description: "Create and run your first AI agent in 5 minutes"
+icon: "rocket"
+---
+
+Follow these steps to create your first AI coding agent and watch it work. The whole process takes about 5 minutes.
+
+<Steps>
+  <Step title="Configure your CLI paths">
+    Open Dorothy and go to **Settings** (the gear icon in the sidebar).
+
+    Under the AI provider section, make sure Dorothy knows where your AI coding tools are installed. The "CLI path" is simply the location of the program on your computer. For example, if you installed Claude Code globally with npm, the path might be something like `/usr/local/bin/claude`.
+
+    <Tip>
+    If you installed Claude Code globally, Dorothy usually finds it automatically. Check that the path field is filled in -- if it is, you're good to go.
+    </Tip>
+  </Step>
+
+  <Step title="Create a new agent">
+    Click **New Agent** from the main dashboard.
+
+    Fill in the basics:
+    - **Name** -- Give your agent a descriptive name (e.g., "Bug Fixer" or "Code Reviewer")
+    - **Model** -- Choose an AI model (e.g., Claude Sonnet). The available models depend on which CLIs you have installed.
+    - **Project folder** -- Select the folder on your Mac that contains the code you want the agent to work with.
+
+    <Note>
+    The project folder is important -- it tells the agent which codebase to read and modify. Pick the root folder of your project.
+    </Note>
+  </Step>
+
+  <Step title="Start the agent">
+    Click **Start** to launch your agent. A terminal view will open where you can interact with it.
+
+    Type a prompt to give the agent its first task. Here are some good ones to try:
+
+    ```
+    Explain this codebase to me
+    ```
+
+    ```
+    Fix the bug in app.js
+    ```
+
+    ```
+    Write unit tests for the utils folder
+    ```
+  </Step>
+
+  <Step title="Watch it work">
+    The terminal view shows the agent's output in real time. You can see exactly what the agent is doing -- reading files, analyzing code, writing changes, and explaining its reasoning.
+
+    You can continue chatting with the agent while it works, providing additional instructions or asking questions.
+  </Step>
+
+  <Step title="Review the results">
+    When the agent finishes its task, its status will change to **completed**. You can:
+
+    - Review everything the agent did in the terminal history
+    - Check the file changes it made in your project folder
+    - Start a new conversation or give it another task
+  </Step>
+</Steps>
+
+---
+
+## What's Next?
+
+Now that you've run your first agent, explore Dorothy's more powerful features:
+
+<CardGroup cols={2}>
+  <Card title="Multi-Agent" icon="users" href="/features/multi-agent">
+    Run multiple agents at the same time, each working on a different task in parallel.
+  </Card>
+  <Card title="Super Agent" icon="crown" href="/features/super-agent">
+    Create a manager agent that can coordinate and delegate work to other agents automatically.
+  </Card>
+  <Card title="Kanban Board" icon="table-columns" href="/features/kanban">
+    Organize your tasks visually with a drag-and-drop board, and let agents pick up work from it.
+  </Card>
+  <Card title="Automations" icon="bolt" href="/features/automations">
+    Set up rules to trigger agents automatically -- like assigning an agent whenever a new GitHub issue is created.
+  </Card>
+</CardGroup>

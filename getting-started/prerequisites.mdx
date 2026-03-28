@@ -1,0 +1,98 @@
+---
+title: "Prerequisites"
+description: "What you need before installing Dorothy"
+icon: "clipboard-check"
+---
+
+## System Requirements
+
+Dorothy runs on **macOS 12 (Monterey) or later**. Both Apple Silicon (M1, M2, M3, M4) and Intel Macs are supported.
+
+<Note>
+Dorothy is currently macOS-only. Windows and Linux support may come in the future.
+</Note>
+
+---
+
+## At Least One AI Coding CLI
+
+Dorothy orchestrates AI coding agents, but it needs at least one AI tool installed on your machine to work. Think of Dorothy as a conductor -- it needs musicians (the AI tools) to make the orchestra play.
+
+Below are the four supported AI coding CLIs. You only need **one** to get started, but you can install as many as you like.
+
+### Claude Code (by Anthropic)
+
+The **primary and most fully supported** AI tool in Dorothy. Claude Code is a command-line coding assistant made by Anthropic.
+
+**To install:**
+
+1. Make sure you have [Node.js 18+](https://nodejs.org/) installed on your Mac
+2. Open your Terminal and run:
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+3. Run `claude` and log in with your **Claude Pro or Max subscription**
+
+<Tip>
+Claude Code is the recommended choice if you're only installing one CLI, as it has the deepest integration with Dorothy.
+</Tip>
+
+For full setup instructions, see the [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code).
+
+### Codex (by OpenAI)
+
+OpenAI's command-line coding agent. Requires a **ChatGPT Pro subscription**.
+
+Install by following the instructions in [OpenAI's documentation](https://platform.openai.com/docs).
+
+### Gemini CLI (by Google)
+
+Google's command-line AI coding tool. You can use it with a **Google One AI Premium subscription** or the generous **free tier**.
+
+Install by following the instructions in [Google's documentation](https://ai.google.dev/).
+
+### Ollama
+
+Unlike the others, Ollama runs AI models **locally on your own computer**. This means:
+
+- No API key needed
+- No data leaves your machine
+- Free to use (but requires a reasonably powerful Mac)
+
+Download Ollama from [ollama.com](https://ollama.com).
+
+---
+
+## Provider Comparison
+
+| Provider | CLI Install Command | Subscription | Cost |
+|---|---|---|---|
+| **Claude Code** (Anthropic) | `npm install -g @anthropic-ai/claude-code` | Claude Pro ($20/mo) or Max ($100/mo) | Included in subscription |
+| **Codex** (OpenAI) | See OpenAI docs | ChatGPT Pro | Included in subscription |
+| **Gemini CLI** (Google) | See Google docs | Google One AI Premium or free tier | Free tier available |
+| **Ollama** | Download from [ollama.com](https://ollama.com) | None needed | Free (runs locally) |
+
+---
+
+## Subscriptions
+
+Dorothy works with each provider's CLI subscription — no API keys needed. Just install the CLI, log in with your account, and you're ready to go.
+
+**Where to subscribe:**
+
+- **Anthropic (for Claude Code):** Sign up at [claude.ai](https://claude.ai) for a Pro ($20/mo) or Max ($100/mo) plan
+- **OpenAI (for Codex):** Subscribe to ChatGPT Pro at [chat.openai.com](https://chat.openai.com)
+- **Google (for Gemini CLI):** Free tier available, or subscribe to Google One AI Premium at [one.google.com](https://one.google.com)
+- **Ollama:** No subscription needed — everything runs on your machine
+
+---
+
+## Optional: Node.js 20+
+
+If you plan to **build Dorothy from source** (most people don't need to), you will need [Node.js 20 or later](https://nodejs.org/) installed on your Mac. If you're just downloading the app, you can skip this.
+
+<Note>
+Node.js 18+ is still needed if you want to install Claude Code via npm, even if you're not building Dorothy from source.
+</Note>

@@ -1,0 +1,141 @@
+---
+title: "Vault Tools"
+description: "MCP tools for document storage and retrieval"
+icon: "vault"
+---
+
+The Vault MCP server provides agents with a shared document storage system. Agents can create, read, update, and search documents — making it easy to share research notes, specifications, logs, and any other text-based content across your team of agents.
+
+Documents can be organized into folders and tagged for easy retrieval.
+
+## Tools
+
+### `vault_list_documents`
+
+List all documents, optionally filtered by folder.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `folderId` | string | No | Filter by folder ID. Omit to list all documents. |
+
+**When to use:** When an agent needs to browse available documents or check what has been stored in a particular folder.
+
+---
+
+### `vault_get_document`
+
+Get the full contents of a document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The document ID |
+
+Returns the document's title, content, tags, and metadata.
+
+**When to use:** When an agent needs to read a specific document — for example, a shared specification or research notes from another agent.
+
+---
+
+### `vault_create_document`
+
+Create a new document in the Vault.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `title` | string | Yes | Document title |
+| `content` | string | Yes | Document content (supports Markdown) |
+| `folderId` | string | No | Folder to place the document in |
+| `tags` | string[] | No | Tags for categorization and search |
+
+**When to use:** When an agent has produced research, notes, or any information that other agents might need later.
+
+---
+
+### `vault_update_document`
+
+Update an existing document's title, content, or tags.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The document ID |
+| `title` | string | No | New title |
+| `content` | string | No | New content |
+| `tags` | string[] | No | New tags (replaces existing tags) |
+
+**When to use:** When an agent needs to append findings to an existing document or correct information.
+
+---
+
+### `vault_delete_document`
+
+Delete a document from the Vault.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The document ID |
+
+**When to use:** When a document is outdated or no longer needed.
+
+---
+
+### `vault_search`
+
+Search across all documents using full-text search.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `query` | string | Yes | Search query |
+
+Searches through document titles, content, and tags. Returns matching documents ranked by relevance.
+
+**When to use:** When an agent needs to find information but does not know which document contains it.
+
+---
+
+### `vault_list_folders`
+
+List all folders in the Vault.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| — | — | — | No parameters required |
+
+**When to use:** When an agent needs to see how documents are organized before creating or looking for content.
+
+---
+
+### `vault_create_folder`
+
+Create a new folder for organizing documents.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | Folder name |
+| `parentId` | string | No | Parent folder ID for nesting |
+
+**When to use:** When an agent wants to organize documents by project, topic, or category.
+
+---
+
+### `vault_delete_folder`
+
+Delete a folder from the Vault.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The folder ID |
+
+**When to use:** When a folder is empty and no longer needed.
+
+---
+
+### `vault_attach_file`
+
+Attach a file from the filesystem to a document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `documentId` | string | Yes | The document to attach the file to |
+| `filePath` | string | Yes | Absolute path to the file on disk |
+
+**When to use:** When an agent needs to associate a generated file (like a screenshot, report, or build artifact) with a Vault document.

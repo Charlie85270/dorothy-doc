@@ -1,0 +1,85 @@
+---
+title: "Twitter / X"
+description: "Search Twitter data and post tweets with AI agents"
+icon: "twitter"
+---
+
+Dorothy includes two MCP servers for interacting with Twitter/X: one for reading data and one for posting content.
+
+<CardGroup cols={2}>
+  <Card title="SocialData" icon="magnifying-glass">
+    **Read-only access.** Search tweets, get user profiles, and read tweet replies. Uses the SocialData API.
+  </Card>
+  <Card title="X API" icon="pen">
+    **Read-write access.** Post tweets, reply to tweets, and delete tweets. Uses the official X API.
+  </Card>
+</CardGroup>
+
+## SocialData Tools (Read-Only)
+
+These tools let your agents search and read Twitter/X data without posting anything.
+
+| Tool | Description |
+|------|-------------|
+| `twitter_search` | Search for tweets matching a query |
+| `twitter_get_user` | Get a user's profile information |
+| `twitter_get_user_tweets` | Get a user's recent tweets |
+| `twitter_get_tweet` | Get details of a specific tweet |
+| `twitter_get_tweet_comments` | Get replies to a tweet |
+
+## X API Tools (Write)
+
+These tools let your agents post and manage tweets.
+
+| Tool | Description |
+|------|-------------|
+| `x_post_tweet` | Post a new tweet |
+| `x_reply_tweet` | Reply to an existing tweet |
+| `x_delete_tweet` | Delete a tweet |
+
+## Setting Up
+
+<Steps>
+  <Step title="Get your API keys">
+    You need credentials for whichever service you want to use:
+    - **SocialData**: Get an API key from [socialdata.tools](https://socialdata.tools)
+    - **X API**: Get your API Key, API Secret, Access Token, and Access Secret from the [X Developer Portal](https://developer.twitter.com)
+  </Step>
+  <Step title="Configure in Dorothy">
+    Go to **Settings** and enter your credentials in the appropriate section:
+    - For SocialData: paste your API key
+    - For X API: paste all four credentials (API Key, API Secret, Access Token, Access Secret)
+  </Step>
+  <Step title="Enable the MCP servers">
+    Make sure the SocialData and/or X API MCP servers are enabled for the providers you want to use them with.
+  </Step>
+</Steps>
+
+<Note>
+You can use SocialData and the X API independently. If you only need to read Twitter data, you do not need X API credentials, and vice versa.
+</Note>
+
+## Use Cases
+
+<CardGroup cols={2}>
+  <Card title="Monitor Mentions" icon="bell">
+    Track social media mentions of your product or brand and get summaries from agents.
+  </Card>
+  <Card title="Support Queries" icon="headset">
+    Detect support questions on Twitter and draft responses for review.
+  </Card>
+  <Card title="Content Generation" icon="pen-to-square">
+    Have agents draft and post content on a schedule.
+  </Card>
+  <Card title="Competitor Research" icon="chart-line">
+    Monitor competitor accounts and get regular activity reports.
+  </Card>
+</CardGroup>
+
+<Warning>
+Be careful with automated posting. Always review content before enabling auto-post capabilities. Automated posting that violates X's terms of service can result in account suspension.
+</Warning>
+
+<Tip>
+Start with SocialData (read-only) to explore what agents can learn from Twitter data before enabling write access through the X API.
+</Tip>

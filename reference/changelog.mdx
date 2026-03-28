@@ -1,0 +1,131 @@
+---
+title: "Changelog"
+description: "Version history and release notes"
+icon: "clock-rotate-left"
+---
+
+## v1.2.6
+
+<sub>March 28, 2026</sub>
+
+- Fixed delay between PTY write and carriage return for Telegram/Slack input
+- Added Chrome browser sharing for agents (`--chrome` flag)
+- Fixed CLI path detection, settings sidebar scroll, and UX improvements
+
+---
+
+## v1.2.5 — Major Release
+
+<sub>March 17, 2026</sub>
+
+**New Agent Providers**
+- Support for **PI** agent provider
+- Support for **OpenCode** agent provider
+
+**Integrations**
+- Support for JIRA self-hosted domains
+
+**Menu Bar**
+- macOS menu bar tray with live agent status panel
+- Status tabs: Working, Waiting for inputs, Ready to work, Idle
+- Full-color Dorothy logo in menu bar
+
+**Agent Management**
+- External MCP server management from settings
+- Live task preview next to agent name
+- Revamped agents page with improved layout and filtering
+- Status line with model, context usage, git branch, session time, and token stats
+
+**Notifications**
+- Custom MP3/audio file support per notification type
+- New "Response Finished" notification toggle
+
+**Hooks**
+- Dedicated `PermissionRequest` and `TaskCompleted` hook events
+
+**Fixes and Improvements**
+- Fixed agent status lifecycle
+- Pinned and favorites projects
+
+---
+
+## v1.2.4
+
+<sub>February 26, 2026</sub>
+
+- Multi-provider support: Claude, Codex, Gemini
+- Provider selector in agent creation
+- Memory page shows projects across all providers
+- Custom MCP server per provider
+- CLI Paths settings for all providers
+
+---
+
+## v1.2.3
+
+<sub>February 19, 2026</sub>
+
+- React app preview tab in agent detail
+- Live preview of react-app code blocks
+- File watcher for `.dorothy-preview/`
+- Window drag regions for macOS
+- Modular API routes
+
+---
+
+## v1.2.2
+
+<sub>February 10, 2026</sub>
+
+- Skills marketplace with community browser
+- Skill installation progress terminal
+- Link skills to providers
+- Improved agent world (ClaudeMon) with NPC zones
+
+---
+
+## v1.2.1
+
+<sub>January 28, 2026</sub>
+
+- Vault with shared document storage
+- Folder organization and full-text search
+- Kanban board with task assignment
+- Auto-spawn agents from card moves
+- Scheduler improvements with cron
+
+---
+
+## v1.2.0 — Major Release
+
+<sub>January 10, 2026</sub>
+
+- Telegram bot integration
+- Slack bot support
+- JIRA integration
+- Automations engine
+- Super Agent / Orchestrator mode
+
+---
+
+## v1.0.1
+
+<sub>December 20, 2025</sub>
+
+- Desktop notifications
+- Memory browser
+- Obsidian vault integration
+- Dark mode
+- Worktree support
+
+---
+
+## v1.0.0 — Initial Release
+
+<sub>December 1, 2025</sub>
+
+- Multi-agent management with persistent PTY sessions
+- Agent creation with skills and character
+- Terminal view with live streaming
+- Dashboard with agent status overview
+- Scheduled tasks with cron support

@@ -1,0 +1,111 @@
+---
+title: "Super Agent"
+description: "An orchestrator that coordinates your entire agent fleet"
+icon: "wand-magic-sparkles"
+---
+
+## What is the Super Agent?
+
+The Super Agent is a **meta-agent that manages your other agents**. Instead of you manually creating agents, assigning tasks, and checking their output, the Super Agent does all of that for you. You give it a high-level goal, and it figures out what agents to create, what tasks to assign, and how to coordinate the work.
+
+Think of it as a project manager for your AI workforce. You describe what you want built, and the Super Agent breaks it down, delegates, and monitors progress.
+
+## Why Use the Super Agent?
+
+<CardGroup cols={3}>
+  <Card title="Hands-Off Orchestration" icon="wand-magic-sparkles">
+    Describe the end goal and walk away. The Super Agent handles task breakdown and delegation automatically.
+  </Card>
+  <Card title="Complex Projects" icon="diagram-project">
+    Perfect for multi-step work that spans frontend, backend, testing, and documentation -- the Super Agent coordinates it all.
+  </Card>
+  <Card title="Overnight Batch Work" icon="moon">
+    Set up a complex task before bed. The Super Agent manages the agents while you sleep and reports the results.
+  </Card>
+</CardGroup>
+
+## How It Works
+
+The Super Agent is itself an AI agent, but with a special set of **MCP orchestrator tools** that let it control other agents. When you give it a task, it can:
+
+1. **Create new agents** with specific names, models, skills, and project directories
+2. **Start agents** with detailed prompts
+3. **Send messages** to running agents for clarification or follow-up
+4. **Wait for agents** to complete their tasks
+5. **Check agent output** to verify the work was done correctly
+6. **Stop agents** that are no longer needed
+7. **Send notifications** via Telegram or Slack to keep you updated on progress
+
+The Super Agent uses these tools in whatever combination makes sense for your task. It reasons about what needs to happen, executes the plan, and adapts if something goes wrong.
+
+<Note>
+  For the full list of MCP tools available to the Super Agent, see the [MCP Orchestrator Reference](/reference/mcp-orchestrator).
+</Note>
+
+## What It Can Do
+
+Here are some example scenarios where the Super Agent shines:
+
+| Scenario | What the Super Agent Does |
+|----------|---------------------------|
+| "Build a user authentication system" | Creates a backend agent for the API, a frontend agent for the login UI, and a test agent to verify everything works |
+| "Refactor the codebase to TypeScript" | Creates multiple agents, each assigned to a different directory, and coordinates the migration |
+| "Review all open PRs" | Creates an agent for each PR, has them review the code, and collects the results |
+| "Update dependencies and fix breaking changes" | Creates an agent to update packages, another to fix compilation errors, and a third to run the test suite |
+
+## How to Start the Super Agent
+
+<Steps>
+  <Step title="Create a new agent">
+    Go to the Agents page and click **New Agent**.
+  </Step>
+  <Step title="Enable Super Agent mode">
+    Toggle the **Super Agent** (or "Orchestrator mode") switch on. This gives the agent access to the MCP orchestrator tools it needs to manage other agents.
+  </Step>
+  <Step title="Configure the agent">
+    Give it a name (e.g., "Orchestrator"), select a powerful model (Opus or Sonnet recommended for complex reasoning), and set the project directory.
+  </Step>
+  <Step title="Give it a high-level task">
+    Start the agent with a detailed prompt describing what you want done. Be specific about:
+    - The overall goal
+    - What types of agents to create (frontend, backend, etc.)
+    - Any constraints or preferences
+    - What skills the sub-agents should have
+  </Step>
+  <Step title="Monitor progress">
+    Watch the Super Agent's terminal output to see it creating agents, delegating tasks, and checking results. You can also switch to the [terminal grid view](/features/multi-agent) to see all the sub-agents working simultaneously.
+  </Step>
+</Steps>
+
+## Communication Tools
+
+The Super Agent can keep you informed even when you are away from your computer:
+
+- **Telegram**: Send progress updates and final results to your Telegram chat
+- **Slack**: Post updates to a Slack channel
+
+This is especially useful for overnight or long-running tasks where you want to know when things are done (or if something went wrong).
+
+## Tips and Best Practices
+
+<Accordion title="Give clear, detailed instructions">
+  The Super Agent works best when you are specific about what you want. Instead of "build a feature," try:
+
+  "Build a user registration feature. Create a backend agent to add a POST /api/register endpoint with email validation. Create a frontend agent to build a registration form in React. Create a test agent to write integration tests. Use the /Users/me/project directory."
+</Accordion>
+
+<Accordion title="Specify skills for sub-agents">
+  Tell the Super Agent what skills each sub-agent should have. This helps if you are also using the [Kanban board](/features/kanban), because tasks can be auto-assigned to agents with matching skills.
+</Accordion>
+
+<Accordion title="Use a powerful model for the Super Agent">
+  The Super Agent needs to reason about task decomposition, coordination, and error handling. Use a capable model like Claude Opus or Sonnet for the best results. The sub-agents it creates can use less expensive models if appropriate.
+</Accordion>
+
+<Accordion title="Start small and scale up">
+  Try the Super Agent with a simple two-agent task first (e.g., "create a backend agent and a test agent") before giving it a complex multi-agent project. This helps you understand how it works and what kind of prompts produce the best results.
+</Accordion>
+
+<Accordion title="Set up notifications for long tasks">
+  If you are running a task that will take a while, configure [Telegram](/integrations/telegram) or [Slack](/integrations/slack) so the Super Agent can notify you when it is done.
+</Accordion>

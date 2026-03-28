@@ -1,0 +1,66 @@
+---
+title: "Telegram Tools"
+description: "MCP tools for sending messages via Telegram"
+icon: "paper-plane"
+---
+
+The Telegram MCP server lets agents send messages, photos, documents, and videos to Telegram chats. This is useful for notifications, status updates, and sharing results with your team.
+
+<Note>
+These tools let agents **send** messages to Telegram. For receiving commands from Telegram and triggering agents, see the Telegram Bot integration guide.
+</Note>
+
+## Tools
+
+### `send_telegram`
+
+Send a text message to a Telegram chat.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `chatId` | string | Yes | The Telegram chat ID to send to |
+| `text` | string | Yes | Message text (supports Markdown formatting) |
+
+**When to use:** When an agent needs to notify you about progress, results, errors, or any other update.
+
+---
+
+### `send_telegram_photo`
+
+Send a photo to a Telegram chat.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `chatId` | string | Yes | The Telegram chat ID to send to |
+| `photoPath` | string | Yes | Absolute path to the image file |
+| `caption` | string | No | Optional caption text for the photo |
+
+**When to use:** When an agent has generated a screenshot, chart, or any visual content it wants to share.
+
+---
+
+### `send_telegram_document`
+
+Send a file as a document to a Telegram chat.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `chatId` | string | Yes | The Telegram chat ID to send to |
+| `documentPath` | string | Yes | Absolute path to the file |
+| `caption` | string | No | Optional caption text for the document |
+
+**When to use:** When an agent needs to share a file — such as a log file, report, or generated artifact.
+
+---
+
+### `send_telegram_video`
+
+Send a video to a Telegram chat.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `chatId` | string | Yes | The Telegram chat ID to send to |
+| `videoPath` | string | Yes | Absolute path to the video file |
+| `caption` | string | No | Optional caption text for the video |
+
+**When to use:** When an agent has recorded a screen capture or generated a video and wants to share it.

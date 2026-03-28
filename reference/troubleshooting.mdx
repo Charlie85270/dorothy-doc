@@ -1,0 +1,157 @@
+---
+title: "Troubleshooting"
+description: "Common issues and how to fix them"
+icon: "wrench"
+---
+
+## Installation Issues
+
+<AccordionGroup>
+  <Accordion title="The app won't open on my Mac">
+    Check the following:
+
+    - **macOS version**: Dorothy requires macOS 12 (Monterey) or later. You can check your version in **Apple menu > About This Mac**.
+    - **Corrupted download**: Try deleting the app and re-downloading it from the official site.
+    - **Apple Silicon vs Intel**: Make sure you downloaded the correct version for your Mac's processor (Apple Silicon or Intel).
+
+    If the app still won't open, check the Console app (in Applications > Utilities) for error messages related to Dorothy.
+  </Accordion>
+</AccordionGroup>
+
+## Agent Issues
+
+<AccordionGroup>
+  <Accordion title="Agent won't start">
+    There are a few common causes:
+
+    1. **CLI path not set**: Go to **Settings** and verify the CLI path is correct for your agent provider (e.g., Claude, Codex, Gemini). The path should point to the globally installed CLI tool.
+    2. **CLI tool not installed**: Make sure the CLI tool is installed globally. For example, for Claude: `npm install -g @anthropic-ai/claude-code`.
+    3. **Not logged in**: Make sure you're logged in to your CLI tool. Run the CLI command (e.g., `claude`) in your terminal and follow the login prompts.
+    4. **Project path invalid**: Ensure the project path you specified exists and is accessible.
+  </Accordion>
+
+  <Accordion title="Agent shows 'error' status">
+    When an agent shows an error status, check the **terminal output** for details. Click on the agent to open its terminal view.
+
+    Common causes:
+    - **Authentication expired**: Your CLI session may have expired. Re-run the CLI tool and log in again.
+    - **Network issues**: Check your internet connection
+    - **Rate limits**: You may have hit the API provider's rate limits. Wait a few minutes and try again.
+    - **Insufficient permissions**: The project directory may not be writable
+  </Accordion>
+
+  <Accordion title="Agent is stuck in 'waiting' state">
+    A "waiting" status means the agent is waiting for user input or permission approval. This is normal behavior.
+
+    Open the agent's terminal view to see what it is asking for. You can:
+    - Type your response directly in the terminal
+    - Use another agent to send a message via the `send_message` orchestrator tool
+    - If the agent is waiting for a permission prompt, approve or deny it in the terminal
+  </Accordion>
+
+  <Accordion title="Agent is running but no output appears">
+    This can happen for a few reasons:
+
+    - **Initial loading**: When an agent first starts, the AI model needs a few seconds to load and begin generating output. Wait 5-10 seconds.
+    - **Internet connection**: A slow or dropped connection can cause delays. Check your network.
+    - **Large context**: If the agent is processing a lot of files, the initial response may take longer than usual.
+
+    If output still does not appear after 30 seconds, try stopping and restarting the agent.
+  </Accordion>
+</AccordionGroup>
+
+## Integration Issues
+
+<AccordionGroup>
+  <Accordion title="Telegram bot doesn't respond">
+    Check the following:
+
+    1. **Bot token**: Verify the bot token is correct in **Settings > Integrations > Telegram**. You can get a token from [@BotFather](https://t.me/BotFather) on Telegram.
+    2. **Authorized user IDs**: Make sure your Telegram user ID is in the authorized users list. Only authorized users can interact with the bot.
+    3. **Dorothy is running**: The Telegram bot only works while Dorothy is open and running. If you close Dorothy, the bot will stop responding.
+    4. **Bot privacy mode**: If the bot is in a group chat, make sure privacy mode is disabled via BotFather so it can see messages.
+  </Accordion>
+
+  <Accordion title="GitHub automation isn't picking up issues">
+    Check the following:
+
+    1. **Personal access token**: Make sure your GitHub token has the `repo` scope. You can check this at [github.com/settings/tokens](https://github.com/settings/tokens).
+    2. **Repository URL format**: Use the format `owner/repo` (e.g., `Charlie85270/dorothy`), not the full URL.
+    3. **Automation is active**: Check that the automation is not paused. You can see its status on the Automations page.
+    4. **Polling interval**: Automations check for new events at the configured interval. If the interval is long, it may take time to pick up new issues.
+  </Accordion>
+
+  <Accordion title="JIRA connection fails">
+    The fix depends on whether you are using JIRA Cloud or a self-hosted instance:
+
+    **JIRA Cloud:**
+    - Ensure your API token is correct. Generate one at [id.atlassian.com/manage-profile/security/api-tokens](https://id.atlassian.com/manage-profile/security/api-tokens).
+    - Use your email address as the username, not your display name.
+
+    **JIRA Self-Hosted:**
+    - Check the domain URL format. It should be the full URL without a trailing slash (e.g., `https://jira.yourcompany.com`).
+    - Make sure your account has API access enabled.
+    - Self-hosted support was added in v1.2.5 — make sure you are on the latest version.
+  </Accordion>
+</AccordionGroup>
+
+## Performance
+
+<AccordionGroup>
+  <Accordion title="Dorothy is using too much memory">
+    Each running agent maintains a terminal session, which uses memory. To reduce memory usage:
+
+    - **Reduce simultaneous agents**: Stop agents that are not actively working. Idle agents still consume resources.
+    - **Close unused terminals**: If you have many agent terminal tabs open, close the ones you are not monitoring.
+    - **Restart Dorothy**: If memory usage seems unusually high, restart the app to clear accumulated buffers.
+  </Accordion>
+
+  <Accordion title="Agents are slow">
+    Agent speed depends primarily on the AI provider and model you are using:
+
+    - **Try a faster model**: Models like Haiku or GPT-4o-mini respond much faster than Opus or GPT-4. Choose the right model for the task — you do not always need the most powerful one.
+    - **Check your internet connection**: A slow connection will delay all agent communication.
+    - **Provider rate limits**: If you are running many agents simultaneously, you may be hitting rate limits. Spread the work out or wait a few minutes.
+    - **Large codebases**: Agents working in very large repositories may take longer to index and navigate files.
+  </Accordion>
+</AccordionGroup>
+
+## General
+
+<AccordionGroup>
+  <Accordion title="Where does Dorothy store its data?">
+    All Dorothy data is stored in the `~/.dorothy/` directory in your home folder. This includes:
+
+    - Agent configurations and history
+    - Settings and preferences
+    - Vault documents
+    - Kanban tasks
+    - Automation and scheduler configurations
+    - MCP server data
+  </Accordion>
+
+  <Accordion title="How do I reset Dorothy?">
+    To completely reset Dorothy, delete the data directory:
+
+    ```bash
+    rm -rf ~/.dorothy/
+    ```
+
+    <Warning>
+    This will permanently remove **all** Dorothy data, including agents, settings, Vault documents, and Kanban tasks. This action cannot be undone.
+    </Warning>
+
+    After deleting the directory, restart Dorothy and it will create a fresh configuration.
+  </Accordion>
+
+  <Accordion title="How do I report a bug?">
+    Open an issue on GitHub at [github.com/Charlie85270/dorothy/issues](https://github.com/Charlie85270/dorothy/issues).
+
+    When reporting a bug, please include:
+    - Your Dorothy version (shown in the app's title bar or About screen)
+    - Your macOS version
+    - Steps to reproduce the issue
+    - Any error messages from the terminal output
+    - Screenshots if the issue is visual
+  </Accordion>
+</AccordionGroup>

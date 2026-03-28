@@ -1,0 +1,74 @@
+---
+title: "Google Workspace"
+description: "Connect agents to Gmail, Drive, Sheets, Calendar, and Docs"
+icon: "google"
+---
+
+Integrate Dorothy agents with Google Workspace services to read and write emails, manage files, update spreadsheets, schedule events, and work with documents.
+
+## Available Services
+
+<CardGroup cols={2}>
+  <Card title="Gmail" icon="envelope">
+    Send emails, read your inbox, and manage messages.
+  </Card>
+  <Card title="Google Drive" icon="hard-drive">
+    Manage files and folders. Upload and download documents.
+  </Card>
+  <Card title="Google Sheets" icon="table">
+    Read and write spreadsheet data. Append rows to existing sheets.
+  </Card>
+  <Card title="Google Calendar" icon="calendar">
+    View your agenda and create new events.
+  </Card>
+  <Card title="Google Docs" icon="file-lines">
+    Read document content and append text to existing documents.
+  </Card>
+</CardGroup>
+
+## Setting Up
+
+<Steps>
+  <Step title="Create a Google Cloud project">
+    Go to the [Google Cloud Console](https://console.cloud.google.com/) and create a new project (or use an existing one).
+  </Step>
+  <Step title="Enable the required APIs">
+    In your Google Cloud project, enable the APIs for the services you want to use:
+    - Gmail API
+    - Google Drive API
+    - Google Sheets API
+    - Google Calendar API
+    - Google Docs API
+  </Step>
+  <Step title="Configure OAuth credentials">
+    Set up OAuth 2.0 credentials in the Google Cloud Console. Download the credentials file.
+  </Step>
+  <Step title="Add credentials to Dorothy">
+    In Dorothy, go to **Settings → Google Workspace** and upload or paste your OAuth credentials.
+  </Step>
+  <Step title="Authorize access">
+    Dorothy will open a browser window for you to sign in with your Google account and grant access to the enabled services.
+  </Step>
+</Steps>
+
+<Note>
+Google Workspace integration is available as a skill and MCP extension. Check the skills marketplace for available Google Workspace skills that add specific capabilities to your agents.
+</Note>
+
+## What Agents Can Do
+
+| Service | Read | Write |
+|---------|------|-------|
+| Gmail | Read inbox, search messages | Send emails, reply to threads |
+| Google Drive | List files, download content | Upload files, create folders |
+| Google Sheets | Read cell values, query ranges | Write cells, append rows |
+| Google Calendar | View agenda, list events | Create and update events |
+| Google Docs | Read document text | Append text to documents |
+
+<Tip>
+Use Google Sheets integration to have agents log their results in a shared spreadsheet. This gives your team a simple way to track what agents have done without checking each agent individually.
+</Tip>
+
+<Warning>
+Be mindful of the permissions you grant. OAuth scopes control what the agent can access. Only enable the services and scopes you actually need.
+</Warning>

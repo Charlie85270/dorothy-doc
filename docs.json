@@ -1,68 +1,137 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Dorothy",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#3D9B94",
+    "light": "#4DB8B0",
+    "dark": "#2D7A74"
+  },
+  "background": {
+    "light": "#FAF4EA",
+    "dark": "#1A1714"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Getting Started",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Introduction",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "getting-started/prerequisites",
+              "getting-started/installation",
+              "getting-started/quickstart"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Reference",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "getting-started/glossary"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Features",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Core",
             "pages": [
-              "api-reference/introduction"
+              "features/agents",
+              "features/multi-agent",
+              "features/super-agent",
+              "features/dashboard"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Task Management",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "features/kanban",
+              "features/automations",
+              "features/scheduled-tasks"
+            ]
+          },
+          {
+            "group": "Data & Knowledge",
+            "pages": [
+              "features/vault",
+              "features/memory",
+              "features/usage-tracking"
+            ]
+          },
+          {
+            "group": "Interface",
+            "pages": [
+              "features/skills-plugins",
+              "features/canvas",
+              "features/world",
+              "features/settings"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrations",
+        "groups": [
+          {
+            "group": "AI Providers",
+            "pages": [
+              "integrations/providers"
+            ]
+          },
+          {
+            "group": "Communication",
+            "pages": [
+              "integrations/telegram",
+              "integrations/slack"
+            ]
+          },
+          {
+            "group": "Project Management",
+            "pages": [
+              "integrations/github",
+              "integrations/jira"
+            ]
+          },
+          {
+            "group": "Other",
+            "pages": [
+              "integrations/google-workspace",
+              "integrations/obsidian",
+              "integrations/twitter"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "MCP Reference",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "reference/mcp-servers"
+            ]
+          },
+          {
+            "group": "MCP Tools",
+            "pages": [
+              "reference/mcp-orchestrator",
+              "reference/mcp-kanban",
+              "reference/mcp-vault",
+              "reference/mcp-telegram",
+              "reference/mcp-x",
+              "reference/mcp-socialdata",
+              "reference/mcp-world"
+            ]
+          },
+          {
+            "group": "Help",
+            "pages": [
+              "reference/changelog",
+              "reference/troubleshooting"
             ]
           }
         ]
@@ -71,52 +140,48 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "GitHub",
+          "href": "https://github.com/Charlie85270/dorothy",
+          "icon": "github"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Skills Marketplace",
+          "href": "https://skills.sh",
+          "icon": "puzzle-piece"
         }
       ]
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/light.png",
+    "dark": "/logo/dark.png"
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "GitHub",
+        "href": "https://github.com/Charlie85270/dorothy"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Download",
+      "href": "https://dorothyai.app/"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/doraboramon",
+      "github": "https://github.com/Charlie85270/dorothy"
     }
   }
 }

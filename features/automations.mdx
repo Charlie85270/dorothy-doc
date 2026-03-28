@@ -1,0 +1,159 @@
+---
+title: "Automations"
+description: "Connect external services and automate agent workflows"
+icon: "gears"
+---
+
+## What are Automations?
+
+Automations are rules that **automatically trigger agent actions based on external events**. When something happens in GitHub, JIRA, an RSS feed, or a webhook, Dorothy can respond by starting an agent, sending a notification, or updating an external system -- all without you lifting a finger.
+
+For example: a new GitHub issue is created, and Dorothy automatically starts an agent to investigate and fix the bug.
+
+## Why Use Automations?
+
+<CardGroup cols={3}>
+  <Card title="Zero Manual Work" icon="robot">
+    New issues, tickets, and events are handled automatically. You do not need to copy-paste issue descriptions into agent prompts.
+  </Card>
+  <Card title="Always-On Coverage" icon="clock">
+    Automations run in the background. Even when you are away, Dorothy keeps processing incoming work.
+  </Card>
+  <Card title="End-to-End Pipelines" icon="arrow-right">
+    Chain events to actions: a GitHub issue triggers an agent, the agent fixes the bug and comments on the issue with a summary.
+  </Card>
+</CardGroup>
+
+## How Automations Work
+
+Every automation follows a simple pipeline:
+
+**Source** -- **Template** -- **Action** -- **Output**
+
+1. **Source**: Where the event comes from (GitHub, JIRA, RSS, webhook)
+2. **Template**: A prompt template that gets filled in with event data
+3. **Action**: What Dorothy does in response (start an agent, send a notification, etc.)
+4. **Output**: The result (an agent working on the task, a Slack message, a GitHub comment)
+
+## Sources
+
+Sources are the external services that Dorothy monitors for new events.
+
+| Source | Events |
+|--------|--------|
+| **GitHub** | New issues, new pull requests, issue comments |
+| **JIRA** | New tickets, status changes, assignment changes |
+| **RSS Feeds** | New articles or posts from any RSS feed |
+| **Custom Webhooks** | Any HTTP POST sent to Dorothy's webhook URL -- integrate with anything |
+
+## Template Variables
+
+When an event arrives, Dorothy fills in your prompt template with data from the event. Use double curly braces to insert variables:
+
+| Variable | Description |
+|----------|-------------|
+| `{{title}}` | The title of the issue, PR, or ticket |
+| `{{body}}` | The full description or body text |
+| `{{url}}` | A link back to the original issue or PR |
+| `{{author}}` | The person who created the event |
+| `{{labels}}` | Any labels or tags on the issue |
+| `{{repo}}` | The repository name (for GitHub sources) |
+| `{{status}}` | The current status (for JIRA sources) |
+
+**Example template:**
+
+```
+A new GitHub issue was created in {{repo}}:
+
+Title: {{title}}
+Author: {{author}}
+Labels: {{labels}}
+
+Description:
+{{body}}
+
+Please investigate this issue, implement a fix, and write tests.
+The issue is at: {{url}}
+```
+
+## Actions
+
+Actions define what Dorothy does when an event matches your automation.
+
+| Action | Description |
+|--------|-------------|
+| **Start an agent** | Launch an agent with a prompt built from the template. The agent begins working on the task immediately. |
+| **Send a Telegram notification** | Send a message to your Telegram chat with details about the event. |
+| **Send a Slack notification** | Post a message to a Slack channel. |
+| **Comment on a GitHub issue/PR** | Post a comment on the original issue or pull request (e.g., "An agent is now working on this"). |
+| **Update a JIRA ticket** | Change the status or add a comment to the JIRA ticket. |
+
+<Tip>
+  You can combine multiple actions in a single automation. For example, start an agent **and** send a Slack notification so your team knows the issue is being handled.
+</Tip>
+
+## Deduplication
+
+Dorothy keeps track of which events it has already processed. If the same GitHub issue or JIRA ticket appears in a subsequent poll, Dorothy will **skip it** instead of starting a duplicate agent. This prevents the same issue from being worked on twice.
+
+<Note>
+  Deduplication is automatic -- you do not need to configure anything. Dorothy tracks processed events internally.
+</Note>
+
+## Creating Your First Automation
+
+<Steps>
+  <Step title="Go to the Automations page">
+    Click **Automations** in the sidebar.
+  </Step>
+  <Step title="Click 'New Automation'">
+    The automation builder opens.
+  </Step>
+  <Step title="Select a source">
+    Choose where events will come from. For your first automation, **GitHub issues** is a great starting point.
+  </Step>
+  <Step title="Configure the connection">
+    Enter the details Dorothy needs to connect to the source:
+
+    | Field | Description |
+    |-------|-------------|
+    | **Repository URL** | The GitHub repo to monitor (e.g., `https://github.com/your-org/your-repo`) |
+    | **Access Token** | A GitHub personal access token with read access to the repo |
+    | **Filters** | Optional: only trigger for issues with specific labels |
+  </Step>
+  <Step title="Write the agent prompt template">
+    Write a prompt template using the [template variables](#template-variables) listed above. This is the prompt your agent will receive when a new issue comes in.
+  </Step>
+  <Step title="Set the polling interval">
+    Choose how often Dorothy checks for new events. For example, every 5 minutes or every hour.
+  </Step>
+  <Step title="Save and enable">
+    Click **Save** to create the automation, then toggle it **on**. Dorothy will begin polling for events at your specified interval.
+  </Step>
+</Steps>
+
+## Tips and Best Practices
+
+<Accordion title="Start simple">
+  Begin with a single GitHub issue automation before building complex multi-action pipelines. Make sure the basics work, then add more sources and actions.
+</Accordion>
+
+<Accordion title="Use filters to avoid noise">
+  Not every GitHub issue needs an agent. Use label filters (e.g., only issues labeled "agent-ready" or "auto-fix") to control which events trigger automations.
+</Accordion>
+
+<Accordion title="Test with short polling intervals">
+  When setting up a new automation, use a short polling interval (e.g., 1 minute) so you can quickly see if it works. Switch to a longer interval once everything is running smoothly.
+</Accordion>
+
+<Accordion title="Add notifications alongside agent actions">
+  When an automation starts an agent, also send a Slack or Telegram notification so your team knows the work is being handled. This builds trust in the system and keeps everyone informed.
+</Accordion>
+
+<Accordion title="Write detailed prompt templates">
+  The quality of your agent's work depends on the quality of the prompt it receives. Include all relevant context from the event variables, and add specific instructions about how the agent should approach the task.
+</Accordion>
+
+<Warning>
+  Keep your access tokens secure. Dorothy stores them locally on your machine, but avoid sharing your automation configurations with tokens included. Use environment variables where possible.
+</Warning>

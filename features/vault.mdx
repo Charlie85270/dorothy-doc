@@ -1,0 +1,136 @@
+---
+title: "Vault"
+description: "Persistent document storage for your agents and team"
+icon: "vault"
+---
+
+## What is the Vault?
+
+The Vault is Dorothy's **built-in document database**. It gives your agents a shared place to store and retrieve information that persists across sessions. Think of it as a knowledge base that any agent can read from and write to.
+
+Without the Vault, each agent works in isolation -- it finishes a task, and whatever it learned disappears when the session ends. The Vault solves this by providing **persistent memory** that any agent can access at any time.
+
+## Why Use the Vault?
+
+<CardGroup cols={3}>
+  <Card title="Persistent Memory" icon="brain">
+    Information stored in the Vault survives across sessions. Agents can pick up where they left off, even days later.
+  </Card>
+  <Card title="Shared Knowledge" icon="share-nodes">
+    Multiple agents can read and write to the same Vault. One agent's findings are available to all the others.
+  </Card>
+  <Card title="Organized Storage" icon="folder-tree">
+    Use folders, tags, and full-text search to keep everything organized and easy to find.
+  </Card>
+</CardGroup>
+
+## How to Use the Vault
+
+### Creating Documents
+
+<Steps>
+  <Step title="Open the Vault">
+    Click **Vault** in the sidebar.
+  </Step>
+  <Step title="Click 'New Document'">
+    A document editor opens where you can write or paste content.
+  </Step>
+  <Step title="Add a title and content">
+    Give the document a clear title and add whatever content you need -- notes, code snippets, research findings, architecture decisions, or anything else.
+  </Step>
+  <Step title="Add tags (optional)">
+    Tags help you categorize and find documents later. For example: "architecture", "api-spec", "meeting-notes".
+  </Step>
+  <Step title="Save">
+    The document is stored in the Vault and immediately available to all agents.
+  </Step>
+</Steps>
+
+### Creating Folders
+
+Organize your documents into folders to keep things tidy:
+
+- Create folders for different projects, topics, or teams
+- Nest folders inside other folders for deeper organization
+- Move documents between folders at any time
+
+### Full-Text Search
+
+The Vault includes **full-text search (FTS)**, which means it searches through the actual content of every document -- not just titles. This is especially powerful when you have hundreds of documents and need to find a specific piece of information.
+
+Just type your search query in the search bar, and the Vault will show all documents that contain matching text.
+
+<Tip>
+  Full-text search works across all folders. You do not need to know which folder a document is in to find it.
+</Tip>
+
+### Tagging System
+
+Tags provide a flexible way to categorize documents that goes beyond folder structure:
+
+- A single document can have multiple tags
+- Filter the document list by one or more tags
+- Use consistent tag names across your team for best results
+
+Example tags: `architecture`, `api`, `frontend`, `bug-report`, `research`, `decision`
+
+### File Attachments
+
+You can attach files to any Vault document. This is useful for storing:
+
+- Screenshots or diagrams
+- Configuration files
+- PDFs or reference documents
+- Any other file your agents might need to reference
+
+## How Agents Use the Vault
+
+Agents interact with the Vault through **MCP tools**. This means agents can programmatically create, read, search, and update documents as part of their workflow.
+
+### What Agents Can Do
+
+| Action | Description |
+|--------|-------------|
+| **Create documents** | Save findings, write reports, store code snippets, or document decisions |
+| **Search the Vault** | Look up information stored by other agents or by you |
+| **Read documents** | Retrieve the full content of a specific document |
+| **Update documents** | Add new information to an existing document |
+| **List documents** | Browse all documents, optionally filtered by folder or tag |
+
+### Example Workflows
+
+- **Agent A** researches an API and saves the documentation summary to the Vault. Later, **Agent B** searches the Vault for that API info when building an integration.
+- A **test agent** stores test results in the Vault after each run. A **reporting agent** reads those results and generates a summary.
+- The **Super Agent** saves its orchestration plan to the Vault so you can review it later.
+
+<Note>
+  For the full list of Vault MCP tools, see the [MCP Vault Reference](/reference/mcp-vault).
+</Note>
+
+## Obsidian Sync
+
+If you use [Obsidian](https://obsidian.md) for personal knowledge management, Dorothy can **automatically export Vault documents to your Obsidian vault**. This lets you browse, search, and link your agent-generated documents alongside your own notes.
+
+For setup instructions, see the [Obsidian Integration](/integrations/obsidian) page.
+
+## Tips and Best Practices
+
+<Accordion title="Use the Vault as a shared knowledge base">
+  When multiple agents are working on the same project, have them save their findings to the Vault. This way, each agent can benefit from what the others have learned, reducing duplicate work.
+</Accordion>
+
+<Accordion title="Store architecture decisions">
+  Use the Vault to document important decisions (e.g., "We chose PostgreSQL over MongoDB because..."). Agents can reference these decisions later to stay consistent.
+</Accordion>
+
+<Accordion title="Use consistent tag names">
+  Agree on a set of standard tags before you start. For example, always use "api" instead of sometimes using "api" and sometimes "api-docs". Consistent tags make searching much easier.
+</Accordion>
+
+<Accordion title="Let agents document their work">
+  Encourage agents (via their prompts) to save summaries of what they did to the Vault. This creates an audit trail and makes it easy to review work later.
+</Accordion>
+
+<Accordion title="Combine with Obsidian for a complete knowledge system">
+  Enable Obsidian sync so your agent-generated documents are available alongside your personal notes. This is especially powerful for teams that already use Obsidian for documentation.
+</Accordion>

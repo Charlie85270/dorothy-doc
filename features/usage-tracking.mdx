@@ -1,0 +1,70 @@
+---
+title: "Usage & Costs"
+description: "Track token consumption and costs across all your agents"
+icon: "chart-line"
+---
+
+AI APIs charge based on how many **tokens** your agents consume. A token is roughly 3/4 of a word -- so a 1,000-word conversation uses about 1,300 tokens. Dorothy tracks all of this automatically so you always know what you're spending.
+
+## Per-Agent Breakdown
+
+Every agent has its own usage summary showing:
+
+- **Input tokens** -- how much text was sent to the model (your prompts, file contents, etc.)
+- **Output tokens** -- how much text the model generated in response
+- **Total tokens** -- the combined count
+
+This makes it easy to see which agents are the heaviest users and whether any are consuming more than expected.
+
+## Cost Calculation
+
+Dorothy estimates the cost of each agent based on the model it's using and that model's per-token pricing. You'll see a dollar amount alongside the token count, so you don't need to do the math yourself.
+
+<Note>
+Cost estimates are based on publicly listed API pricing. Your actual costs may vary slightly depending on your provider plan or any discounts you have.
+</Note>
+
+## Historical Trends
+
+The usage page includes graphs showing your token consumption over time. Use these to:
+
+- Spot trends (is usage growing week over week?)
+- Identify spikes (did a particular task use way more tokens than expected?)
+- Plan your budget based on actual usage patterns
+
+## Tips for Reducing Costs
+
+<AccordionGroup>
+  <Accordion title="Use smaller models for simple tasks">
+    Not every task needs the most powerful model. For straightforward work like formatting code, writing boilerplate, or simple edits, a smaller model like **Haiku** is faster and much cheaper. Save larger models like **Opus** for tasks that require deep reasoning or complex problem-solving.
+  </Accordion>
+
+  <Accordion title="Write focused, specific prompts">
+    Vague prompts cause agents to explore broadly, reading lots of files and generating long responses. A specific prompt like "Fix the null check in `utils/auth.ts` on line 42" uses far fewer tokens than "Find and fix bugs in the project."
+  </Accordion>
+
+  <Accordion title="Break large tasks into smaller ones">
+    Instead of asking one agent to "refactor the entire codebase," create multiple agents with narrow, focused tasks. Each one will use fewer tokens, and you get better results too.
+  </Accordion>
+
+  <Accordion title="Review and prune agent memory">
+    Over time, agents accumulate memory that gets loaded into every session. If memory files grow large, they consume tokens on every run. Periodically review and trim outdated memory.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+If you're using multiple agents in parallel on large codebases, token usage can add up quickly. Check the usage page regularly during your first week to get a feel for your typical consumption.
+</Warning>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Dashboard" icon="chart-mixed" href="/features/dashboard">
+    See token usage charts alongside all other agent activity.
+  </Card>
+  <Card title="Settings" icon="gear" href="/features/settings">
+    Configure default models and other cost-related preferences.
+  </Card>
+</CardGroup>

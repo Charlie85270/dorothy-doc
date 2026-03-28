@@ -1,0 +1,88 @@
+---
+title: "GitHub"
+description: "Automate agent workflows with GitHub issues and pull requests"
+icon: "github"
+---
+
+Connect Dorothy to your GitHub repositories to automatically process issues and pull requests. When new events happen in your repo, Dorothy can spin up agents to handle them.
+
+## How It Works
+
+Dorothy polls your GitHub repositories at regular intervals. When it detects new issues or pull requests, it automatically starts an agent with a prompt you define. The prompt can include details from the issue or PR, so the agent has all the context it needs.
+
+## Use Cases
+
+<CardGroup cols={3}>
+  <Card title="Fix Bug Reports" icon="bug">
+    Auto-assign agents to investigate and fix new bug reports as they come in.
+  </Card>
+  <Card title="Review Pull Requests" icon="code-pull-request">
+    Have agents review incoming pull requests for code quality and potential issues.
+  </Card>
+  <Card title="Close Resolved Issues" icon="circle-check">
+    Automatically close issues when agents complete their fixes.
+  </Card>
+</CardGroup>
+
+## Setting Up a GitHub Automation
+
+<Steps>
+  <Step title="Create a new automation">
+    Go to **Automations → New Automation** in Dorothy.
+  </Step>
+  <Step title="Select GitHub as the source">
+    Choose **GitHub** from the list of available automation sources.
+  </Step>
+  <Step title="Enter repository details">
+    Provide your repository URL and a GitHub personal access token. The token needs `repo` scope to read issues and pull requests.
+  </Step>
+  <Step title="Choose the event type">
+    Select whether to trigger on **issues**, **pull requests**, or **both**.
+  </Step>
+  <Step title="Write your prompt template">
+    Write the prompt that will be sent to the agent. Use template variables to include details from the issue or PR:
+
+    | Variable | Description |
+    |----------|-------------|
+    | `{{title}}` | Issue or PR title |
+    | `{{body}}` | Issue or PR description |
+    | `{{url}}` | Link to the issue or PR |
+    | `{{author}}` | Who created it |
+    | `{{labels}}` | Comma-separated list of labels |
+    | `{{number}}` | Issue or PR number |
+  </Step>
+  <Step title="Set the polling interval">
+    Choose how often Dorothy checks for new events (e.g., every 5 minutes).
+  </Step>
+  <Step title="Save and enable">
+    Save the automation and toggle it on. Dorothy will begin polling immediately.
+  </Step>
+</Steps>
+
+## Example Prompt Template
+
+```
+You are a bug fixer. A new issue was reported: "{{title}}"
+
+Description: {{body}}
+
+Please investigate and fix this issue. The issue URL is {{url}}.
+```
+
+This template creates a focused prompt that gives the agent the issue title, full description, and a link back to the original issue.
+
+<Tip>
+Use GitHub labels to filter which issues trigger automations. For example, you could set up an automation that only runs for issues labeled **"bug"**, so feature requests and questions are ignored.
+</Tip>
+
+<Warning>
+Make sure your GitHub personal access token has the necessary permissions. A token with only `read` access will not be able to comment on issues or close them.
+</Warning>
+
+<Accordion title="How do I create a GitHub personal access token?">
+  1. Go to [github.com/settings/tokens](https://github.com/settings/tokens)
+  2. Click **Generate new token (classic)**
+  3. Give it a descriptive name (e.g., "Dorothy Automation")
+  4. Select the `repo` scope
+  5. Click **Generate token** and copy it immediately -- you will not see it again
+</Accordion>

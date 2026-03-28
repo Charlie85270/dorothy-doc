@@ -1,0 +1,74 @@
+---
+title: "SocialData Tools"
+description: "MCP tools for searching and reading Twitter/X data"
+icon: "magnifying-glass"
+---
+
+The SocialData MCP server provides read-only access to Twitter/X data. Agents can search for tweets, look up user profiles, and read replies — all without needing to post anything.
+
+<Note>
+These are **read-only** tools. For posting tweets, see the [X / Twitter Tools](/reference/mcp-x).
+</Note>
+
+## Tools
+
+### `twitter_search`
+
+Search for tweets matching a query.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `query` | string | Yes | Search query (supports Twitter search operators) |
+| `count` | number | No | Number of results to return (default: 20) |
+
+**When to use:** When an agent needs to find tweets about a topic, monitor mentions, or research what people are saying about something.
+
+---
+
+### `twitter_get_user`
+
+Get profile information for a Twitter/X user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `username` | string | Yes | The user's handle (without the @ symbol) |
+
+**When to use:** When an agent needs to look up a user's bio, follower count, or other profile details.
+
+---
+
+### `twitter_get_user_tweets`
+
+Get a user's recent tweets.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `userId` | string | Yes | The user's numeric ID |
+| `count` | number | No | Number of tweets to return |
+
+**When to use:** When an agent needs to review what a specific user has been posting recently.
+
+---
+
+### `twitter_get_tweet`
+
+Get a specific tweet by its ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `tweetId` | string | Yes | The tweet ID |
+
+**When to use:** When an agent has a tweet ID (for example, from a search result or a URL) and needs to read the full tweet content.
+
+---
+
+### `twitter_get_tweet_comments`
+
+Get replies to a specific tweet.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `tweetId` | string | Yes | The tweet ID |
+| `count` | number | No | Number of replies to return |
+
+**When to use:** When an agent needs to read the conversation around a tweet — for example, to understand community feedback or gather responses.

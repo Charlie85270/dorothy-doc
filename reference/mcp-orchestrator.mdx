@@ -1,0 +1,308 @@
+---
+title: "Orchestrator Tools"
+description: "MCP tools for managing agents, automations, and scheduled tasks"
+icon: "wand-magic-sparkles"
+---
+
+The Orchestrator is Dorothy's most powerful MCP server. It gives agents the ability to manage other agents, run automations, schedule tasks, and send notifications through external services like Slack, Telegram, and JIRA.
+
+## Agent Management
+
+### `list_agents`
+
+List all agents currently registered in Dorothy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| — | — | — | No parameters required |
+
+Returns an array of agent objects with their current status, name, and configuration.
+
+**When to use:** When an agent needs to see what other agents exist before delegating work or checking on progress.
+
+---
+
+### `get_agent`
+
+Get detailed information about a specific agent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The unique identifier of the agent |
+
+**When to use:** When an agent needs to check the status, configuration, or details of another agent.
+
+---
+
+### `get_agent_output`
+
+Get the recent terminal output from an agent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The unique identifier of the agent |
+| `lines` | number | No | Number of lines to retrieve (default: 50) |
+
+**When to use:** When an orchestrator agent wants to review what another agent has been doing, check for errors, or read its latest results.
+
+---
+
+### `create_agent`
+
+Create a new agent without starting it.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | Display name for the agent |
+| `projectPath` | string | Yes | Absolute path to the project directory |
+| `model` | string | No | AI model to use (e.g., "opus", "sonnet") |
+| `skills` | string[] | No | List of skill names to attach |
+
+**When to use:** When you want to set up an agent ahead of time and start it later with a specific prompt.
+
+---
+
+### `start_agent`
+
+Start an existing agent with a prompt.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The unique identifier of the agent |
+| `prompt` | string | Yes | The instruction to give the agent |
+| `options` | object | No | Additional options (worktree, model, etc.) |
+
+**When to use:** When an agent has been created but not yet started, or when you want to restart an agent with a new task.
+
+---
+
+### `stop_agent`
+
+Stop a running agent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The unique identifier of the agent |
+
+**When to use:** When an agent needs to be stopped — for example, if it is stuck or its task has been superseded.
+
+---
+
+### `send_message`
+
+Send a message or input to a running agent's terminal.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The unique identifier of the agent |
+| `message` | string | Yes | The text to send |
+
+**When to use:** When an agent is waiting for input (e.g., a permission prompt or a follow-up question) and another agent or automation needs to respond.
+
+---
+
+### `remove_agent`
+
+Permanently delete an agent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The unique identifier of the agent |
+
+**When to use:** When an agent is no longer needed and should be cleaned up.
+
+---
+
+### `wait_for_agent`
+
+Poll until an agent reaches a terminal state (completed or error).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The unique identifier of the agent |
+| `timeout` | number | No | Maximum wait time in milliseconds |
+
+**When to use:** When an orchestrator agent has delegated a task and needs to wait for it to finish before proceeding.
+
+---
+
+### `delegate_task`
+
+Create and start an agent in a single step. This is a convenience tool that combines `create_agent` and `start_agent`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | Display name for the agent |
+| `projectPath` | string | Yes | Absolute path to the project directory |
+| `prompt` | string | Yes | The instruction to give the agent |
+| `model` | string | No | AI model to use |
+| `skills` | string[] | No | List of skill names to attach |
+
+**When to use:** When an agent wants to spin up a sub-agent to handle a specific task. This is the most common way agents delegate work.
+
+---
+
+## Automations
+
+### `list_automations`
+
+List all configured automations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| — | — | — | No parameters required |
+
+---
+
+### `create_automation`
+
+Create a new automation that triggers agents based on external events.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | Display name for the automation |
+| `source` | object | Yes | Event source configuration (type and config) |
+| `promptTemplate` | string | Yes | Prompt template for the agent (supports variables) |
+| `interval` | number | Yes | Polling interval in milliseconds |
+
+**When to use:** When you want to set up an automated workflow — for example, "every time a new GitHub issue is opened, spin up an agent to triage it."
+
+---
+
+### `get_automation`
+
+Get details of a specific automation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The automation ID |
+
+---
+
+### `get_automation_logs`
+
+Get execution logs for an automation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The automation ID |
+
+---
+
+### `run_automation`
+
+Manually trigger an automation immediately, regardless of its schedule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The automation ID |
+
+---
+
+### `pause_automation`
+
+Pause a running automation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The automation ID |
+
+---
+
+### `resume_automation`
+
+Resume a paused automation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The automation ID |
+
+---
+
+## Scheduled Tasks
+
+### `list_scheduled_tasks`
+
+List all scheduled tasks.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| — | — | — | No parameters required |
+
+---
+
+### `create_scheduled_task`
+
+Create a task that runs on a cron schedule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | Display name for the task |
+| `cron` | string | Yes | Cron expression (e.g., `"0 9 * * *"` for daily at 9 AM) |
+| `prompt` | string | Yes | The instruction to give the agent when the task runs |
+| `projectPath` | string | Yes | Absolute path to the project directory |
+| `model` | string | No | AI model to use |
+
+**When to use:** When you want a task to run at regular intervals — for example, "run tests every morning at 9 AM."
+
+---
+
+### `run_scheduled_task`
+
+Execute a scheduled task immediately without waiting for its next cron trigger.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The task ID |
+
+---
+
+### `delete_scheduled_task`
+
+Delete a scheduled task.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The task ID |
+
+---
+
+## External Notifications
+
+### `send_slack`
+
+Send a message to a Slack channel.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `channel` | string | Yes | Slack channel name or ID |
+| `text` | string | Yes | Message text |
+
+**When to use:** When an agent needs to notify a team via Slack — for example, after completing a deployment or encountering an error.
+
+---
+
+### `send_telegram`
+
+Send a message via Telegram.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `chatId` | string | Yes | Telegram chat ID |
+| `text` | string | Yes | Message text |
+
+**When to use:** When an agent needs to send a notification or update to a Telegram chat.
+
+---
+
+### `update_jira_issue`
+
+Update a JIRA issue with a comment or status change.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `issueKey` | string | Yes | The JIRA issue key (e.g., "PROJ-123") |
+| `comment` | string | No | Comment to add to the issue |
+| `status` | string | No | New status for the issue |
+
+**When to use:** When an agent has finished working on a JIRA ticket and needs to update its status or leave a comment with results.

@@ -1,0 +1,56 @@
+---
+title: "Obsidian"
+description: "Sync Dorothy's Vault with your Obsidian knowledge base"
+icon: "notebook"
+---
+
+Automatically sync documents from Dorothy's Vault to your Obsidian vault. Keep your AI agents' knowledge accessible in your personal knowledge management system.
+
+## Why Sync with Obsidian?
+
+Dorothy's Vault stores documents that your agents create and reference. By syncing with Obsidian, you can:
+
+- **Browse agent knowledge** in a familiar interface
+- **Search across everything** using Obsidian's powerful search
+- **Link agent outputs** to your own notes and projects
+- **Keep a permanent record** of what your agents have produced
+
+## Setting Up
+
+<Steps>
+  <Step title="Open Obsidian settings in Dorothy">
+    Go to **Settings → Obsidian** in Dorothy.
+  </Step>
+  <Step title="Set your Obsidian vault path">
+    Enter the file path to your Obsidian vault directory on your computer (e.g., `/Users/you/Documents/MyVault`).
+  </Step>
+  <Step title="Enable auto-sync">
+    Toggle on **Auto-sync**. Dorothy will now automatically export new Vault documents to your Obsidian vault.
+  </Step>
+  <Step title="Verify the sync">
+    Create or update a document in Dorothy's Vault, then check your Obsidian vault to confirm it appears.
+  </Step>
+</Steps>
+
+## How It Works
+
+- New documents created in Dorothy's Vault are automatically exported as Markdown files to your Obsidian vault.
+- The folder structure from Dorothy's Vault is preserved in Obsidian.
+- Tags are converted to Obsidian-compatible format (e.g., `#tag-name`).
+- Sync happens whenever a document is created or updated in Dorothy.
+
+<Note>
+Sync is one-directional: from Dorothy's Vault to Obsidian. Changes you make to the synced files in Obsidian will not be reflected back in Dorothy.
+</Note>
+
+<Tip>
+Create a dedicated folder in your Obsidian vault for Dorothy exports (e.g., `Dorothy/`). Set this folder as the sync target in Dorothy settings to keep agent documents separate from your personal notes.
+</Tip>
+
+<Accordion title="What file formats are supported?">
+  All documents are exported as standard Markdown (`.md`) files. Attachments and images referenced in documents are also synced to the vault.
+</Accordion>
+
+<Accordion title="Can I sync multiple Obsidian vaults?">
+  Dorothy supports syncing to one Obsidian vault at a time. If you use multiple vaults, choose the one where you want agent documents to appear.
+</Accordion>

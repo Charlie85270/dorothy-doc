@@ -1,0 +1,75 @@
+---
+title: "Skills & Plugins"
+description: "Give your agents specialized expertise and capabilities"
+icon: "puzzle-piece"
+---
+
+Dorothy has two ways to extend what your agents can do: **Skills** give agents specialized knowledge, and **Plugins** add new capabilities to Dorothy itself.
+
+## Skills
+
+A skill is a set of instructions that gives an agent specialized expertise in a particular area. Think of it like hiring a specialist -- a React skill turns your agent into an expert React developer, while an SEO skill turns it into an SEO auditor.
+
+Skills come from the [skills.sh community marketplace](https://skills.sh), where developers share and discover skill packs for common tasks.
+
+### Skill Categories
+
+| Category | Examples | Best For |
+|----------|----------|----------|
+| **Code** | React development, Python, TypeScript | Building and reviewing code |
+| **Design** | UI/UX patterns, accessibility | Frontend and design tasks |
+| **Data** | Data analysis, SQL, pandas | Working with datasets |
+| **DevOps** | Docker, CI/CD, Kubernetes | Infrastructure and deployment |
+| **General** | Writing, documentation, research | Non-code tasks |
+
+### Installing a Skill
+
+<Steps>
+  <Step title="Browse the marketplace">
+    Open Dorothy and navigate to the **Skills** section in the sidebar. You'll see the skills.sh marketplace with all available skills, organized by category.
+  </Step>
+
+  <Step title="Install the skill">
+    Find a skill you want and click **Install**. Dorothy downloads the skill and makes it available for your agents.
+  </Step>
+
+  <Step title="Assign to an agent">
+    When creating or editing an agent, you can assign one or more skills to it. The agent will use those skills as part of its working knowledge.
+  </Step>
+</Steps>
+
+### Linking Skills to Providers
+
+Some skills work best (or only) with specific AI providers. For example, a skill that relies on Claude-specific features can be linked so that it only activates when the agent is using Claude.
+
+You can configure this in the skill's settings after installation.
+
+<Tip>
+Combine multiple skills on a single agent for well-rounded expertise. For example, pair a "React development" skill with a "Testing" skill to get an agent that writes React code *and* thorough tests.
+</Tip>
+
+## Plugins
+
+Plugins extend Dorothy itself rather than individual agents. They add system-level capabilities that all agents can benefit from.
+
+**Examples of plugins:**
+
+- **TypeScript language server** -- gives agents deeper understanding of TypeScript codebases (type information, auto-completions, error detection)
+- **Python language server** -- same benefits for Python projects
+
+<Note>
+Skills make agents smarter about a topic. Plugins make Dorothy itself more capable. Most users will spend more time with skills than plugins.
+</Note>
+
+## Assigning Skills During Agent Creation
+
+When you create a new agent, the setup form includes a **Skills** section where you can pick from your installed skills. You can also add or remove skills later by editing the agent.
+
+<CardGroup cols={2}>
+  <Card title="Skills Marketplace" icon="store" href="https://skills.sh">
+    Browse and discover community-created skills for your agents.
+  </Card>
+  <Card title="Agents" icon="robot" href="/features/agents">
+    Learn how to create and configure agents that use skills.
+  </Card>
+</CardGroup>

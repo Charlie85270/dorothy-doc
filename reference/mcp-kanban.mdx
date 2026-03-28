@@ -1,0 +1,113 @@
+---
+title: "Kanban Tools"
+description: "MCP tools for managing tasks on the Kanban board"
+icon: "table-columns"
+---
+
+The Kanban MCP server gives agents the ability to manage tasks on Dorothy's built-in task board. Agents can create tasks, move them between columns, assign work to other agents, and track progress.
+
+The Kanban board has four columns: **Backlog**, **Planned**, **Ongoing**, and **Done**.
+
+## Tools
+
+### `list_tasks`
+
+List all tasks on the Kanban board, optionally filtered by column or assignee.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `column` | string | No | Filter by column: `backlog`, `planned`, `ongoing`, or `done` |
+| `assignedTo` | string | No | Filter by assigned agent ID |
+
+**When to use:** When an agent needs to see what tasks are available, check its own assignments, or review the overall workload.
+
+---
+
+### `get_task`
+
+Get the full details of a specific task.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The task ID |
+
+**When to use:** When an agent needs to read a task's description, priority, or progress before starting work.
+
+---
+
+### `create_task`
+
+Create a new task on the Kanban board.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `title` | string | Yes | Short title for the task |
+| `description` | string | No | Detailed description of the work |
+| `column` | string | No | Initial column (default: `backlog`) |
+| `priority` | string | No | Priority level: `low`, `medium`, or `high` |
+| `skills` | string[] | No | Skills required for this task |
+
+**When to use:** When an agent identifies new work that needs to be tracked — for example, a bug found during code review, or a follow-up task from a completed feature.
+
+---
+
+### `move_task`
+
+Move a task to a different column on the board.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The task ID |
+| `column` | string | Yes | Target column: `backlog`, `planned`, `ongoing`, or `done` |
+
+**When to use:** When an agent starts working on a task (move to `ongoing`) or needs to re-prioritize work.
+
+---
+
+### `delete_task`
+
+Permanently delete a task from the board.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The task ID |
+
+**When to use:** When a task is no longer relevant — for example, a duplicate or a task that was created by mistake.
+
+---
+
+### `assign_task`
+
+Assign a task to a specific agent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The task ID |
+| `agentId` | string | Yes | The ID of the agent to assign |
+
+**When to use:** When an orchestrator agent is distributing work across multiple agents, or when an agent picks up a task for itself.
+
+---
+
+### `mark_task_done`
+
+Mark a task as completed and move it to the Done column.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The task ID |
+
+**When to use:** When an agent has finished the work described in a task.
+
+---
+
+### `update_task_progress`
+
+Update the progress percentage of a task.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The task ID |
+| `progress` | number | Yes | Progress percentage from 0 to 100 |
+
+**When to use:** When an agent wants to report incremental progress on a long-running task — for example, "50% done with the migration."

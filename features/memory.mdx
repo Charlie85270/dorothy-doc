@@ -1,0 +1,79 @@
+---
+title: "Memory & Knowledge"
+description: "Persistent memory that agents carry across sessions"
+icon: "brain"
+---
+
+By default, AI agents start each session with a blank slate -- they don't remember what happened last time. Dorothy's memory system changes that. Agents can store and recall information across sessions, so they build up knowledge about your projects over time.
+
+## How It Works
+
+Dorothy integrates with Claude Code's native memory system. Memory files are stored on your machine at:
+
+```
+~/.claude/projects/<project-name>/memory/
+```
+
+Each project can have multiple memory files covering different topics. For example:
+
+- `patterns.md` -- coding patterns and conventions used in the project
+- `debugging.md` -- known issues and how they were resolved
+- `architecture.md` -- high-level structure and design decisions
+
+When an agent starts working on a project, it automatically reads the relevant memory files. This means the agent already knows the project's conventions, past decisions, and lessons learned before it writes a single line of code.
+
+## Memory Browser
+
+Dorothy includes a visual **Memory Browser** page where you can:
+
+- Browse all memory files across every project
+- Read and edit memory contents directly
+- Create new memory files for topics you want agents to remember
+- Delete outdated memory that's no longer relevant
+
+<Tip>
+Periodically review your memory files and prune outdated information. Old memories still consume tokens when loaded, and stale information can lead agents to make outdated assumptions.
+</Tip>
+
+## Knowledge Graph
+
+The Knowledge Graph is a visualization that shows connections between memory topics and projects. It helps you see:
+
+- Which projects share common knowledge
+- How topics relate to each other
+- Where gaps in memory might exist
+
+This is especially useful when you're managing many projects and want to understand how your agents' accumulated knowledge is structured.
+
+## How Agents Use Memory
+
+<Steps>
+  <Step title="Agent starts a session">
+    When you start an agent on a project, Dorothy loads the relevant memory files for that project into the agent's context.
+  </Step>
+
+  <Step title="Agent works with context">
+    The agent uses the loaded memory alongside your prompt. It knows the project's patterns, past issues, and conventions without you having to re-explain them.
+  </Step>
+
+  <Step title="Agent updates memory">
+    As the agent works, it can write new information to memory -- like a pattern it discovered or a bug it fixed. This knowledge will be available in future sessions.
+  </Step>
+</Steps>
+
+<Note>
+Memory is per-project. An agent working on Project A won't automatically see memory from Project B. This keeps context focused and relevant.
+</Note>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Agents" icon="robot" href="/features/agents">
+    Learn how to create agents that build up project knowledge over time.
+  </Card>
+  <Card title="Vault" icon="box-archive" href="/features/vault">
+    Store and share documents that agents can reference during their work.
+  </Card>
+</CardGroup>

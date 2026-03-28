@@ -1,0 +1,74 @@
+---
+title: "AI Providers"
+description: "Connect Dorothy to Claude, Codex, Gemini, Ollama, and more"
+icon: "robot"
+---
+
+Dorothy supports multiple AI coding agent providers. You can use one provider or mix and match several at the same time. Each provider connects to a different AI service through its own CLI tool.
+
+## Supported Providers
+
+| Provider | AI Service | CLI Tool | Subscription | Notes |
+|----------|-----------|----------|-------------|-------|
+| Claude | Anthropic | Claude Code | Claude Pro or Max | Primary provider, most features supported |
+| Codex | OpenAI | Codex CLI | ChatGPT Pro | ChatGPT-powered coding agent |
+| Gemini | Google | Gemini CLI | Free tier or Google One AI Premium | Google's AI coding agent |
+| Ollama | Local | Ollama | None needed | Run open-source models locally, data stays on your machine |
+| PI | PI | PI CLI | See PI docs | Community provider |
+| OpenCode | OpenCode | OpenCode CLI | See OpenCode docs | Community provider |
+
+<Tip>
+Claude is the most fully supported provider and the best place to start. If you're new to Dorothy, begin with Claude and explore other providers as needed.
+</Tip>
+
+<Tip>
+Use Ollama for privacy-sensitive work. Since it runs models locally on your machine, no data leaves your computer.
+</Tip>
+
+## Selecting a Provider When Creating an Agent
+
+When you create a new agent, you choose which provider it will use.
+
+<Steps>
+  <Step title="Open the agent creation panel">
+    Click the **+** button or use the keyboard shortcut to create a new agent.
+  </Step>
+  <Step title="Choose a provider">
+    Select your desired provider from the dropdown menu. Only providers with valid configuration will appear.
+  </Step>
+  <Step title="Configure the agent">
+    Enter your prompt and any other settings, then start the agent.
+  </Step>
+</Steps>
+
+## Per-Provider MCP Server Configuration
+
+You can assign different MCP servers to different providers. This means your Claude agents might have access to one set of tools while your Gemini agents use a different set.
+
+To configure MCP servers per provider:
+
+1. Go to **Settings** and select the provider tab.
+2. Under **MCP Servers**, add or remove servers for that specific provider.
+3. Each agent created with that provider will inherit its MCP server configuration.
+
+<Note>
+Some MCP servers may only work reliably with certain providers. Check the MCP server documentation for compatibility notes.
+</Note>
+
+## Per-Provider Skill Linking
+
+Some skills are designed to work with specific providers. When you install a skill, Dorothy will indicate which providers it supports. Skills that are not compatible with a provider will not appear in that provider's configuration.
+
+## Running Multiple Providers Simultaneously
+
+One of Dorothy's strengths is running agents from different providers at the same time. For example, you could have:
+
+- A **Claude** agent working on backend logic
+- A **Gemini** agent writing frontend components
+- An **Ollama** agent handling tasks with sensitive data
+
+All agents run in parallel and can work on the same project. Dorothy manages each agent's connection to its respective provider independently.
+
+<Warning>
+Make sure each provider's CLI tool is installed and properly configured before attempting to use it. Dorothy will show an error if a required CLI tool is missing.
+</Warning>

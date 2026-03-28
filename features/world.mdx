@@ -1,0 +1,69 @@
+---
+title: "Agent World"
+description: "A fun Pokemon-style game world where your agents come to life"
+icon: "gamepad"
+---
+
+Agent World (also known as "Pallet Town" or "ClaudeMon") is a playable 2D game world built right into Dorothy. Inspired by classic Pokemon games, it turns your agents into NPC characters that you can walk up to and interact with.
+
+<Note>
+Agent World is purely for fun and visualization. It doesn't change how your agents work or affect their performance in any way. Think of it as a creative way to see what your agents are up to.
+</Note>
+
+## How It Works
+
+When you open Agent World, you'll find yourself in a tile-based 2D world. Your agents appear as NPC characters scattered around the map. You can:
+
+- **Walk around** the world using your keyboard
+- **Talk to agent NPCs** to see what they're currently working on, their status, and recent activity
+- **Explore buildings** and enter interiors with their own maps and NPCs
+- **Read signs** placed around the world with helpful information
+
+## Zones
+
+The game world is divided into **zones** -- distinct areas with their own maps, characters, and themes. Each zone has:
+
+- A tile-based map with terrain, buildings, and decorations
+- NPCs representing your agents or other characters
+- Interactive signs with text you can read
+- Collision detection so you can't walk through walls or objects
+
+### Generative Zones
+
+One of the most unique features is the ability to generate entirely new zones using AI. Dorothy can create custom zones with:
+
+- A theme you specify (e.g., "a cozy library", "a futuristic lab", "a forest village")
+- Auto-generated maps, NPCs, and dialogue
+- Custom signs with relevant information
+
+This means your game world can grow and evolve as you add more agents and projects.
+
+<Tip>
+Create themed zones for different projects or teams. For example, a "Backend Zone" for your backend agents and a "Frontend Zone" for your frontend agents.
+</Tip>
+
+## Technical Details
+
+Under the hood, Agent World uses:
+
+- Tile-based rendering with sprite sheets
+- Collision detection for walls, buildings, and objects
+- A dialogue system for NPC conversations
+- Building interiors as separate maps you can enter and exit
+
+## Managing the World
+
+You can manage zones, NPCs, and signs through Dorothy's MCP tools. For the full list of available commands, see the [World MCP Reference](/reference/mcp-world).
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Canvas View" icon="diagram-project" href="/features/canvas">
+    A more practical, node-based visualization of your agents.
+  </Card>
+  <Card title="World MCP Tools" icon="terminal" href="/reference/mcp-world">
+    API reference for creating and managing game zones programmatically.
+  </Card>
+</CardGroup>

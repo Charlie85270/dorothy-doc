@@ -1,0 +1,67 @@
+---
+title: "Canvas View"
+description: "Visual workflow editor with node-based agent graph"
+icon: "diagram-project"
+---
+
+Canvas View gives you a visual, node-based interface for seeing your agents and projects as a connected graph. Instead of a list or table, you see your entire setup laid out spatially -- making it easier to understand relationships at a glance.
+
+## What You'll See
+
+Each element in your setup is represented as a **node** on the canvas:
+
+- **Agent nodes** -- each agent appears as its own node, showing its name, model, and current status
+- **Project nodes** -- each project folder appears as a connected node, linked to the agents that work on it
+
+Lines between nodes show which agents are assigned to which projects. If multiple agents work on the same project, you'll see them all connected to that project's node.
+
+## Real-Time Status
+
+Every agent node is color-coded to show its current state:
+
+| Color | Status |
+|-------|--------|
+| **Green** | Running -- actively working |
+| **Yellow** | Waiting -- needs input or permission |
+| **Blue** | Idle -- online but not doing anything |
+| **Gray** | Stopped -- not running |
+| **Red** | Error -- something went wrong |
+
+Status updates happen in real time, so the canvas is always current.
+
+## Interacting with the Canvas
+
+The canvas is fully interactive:
+
+- **Click a node** to open a detail panel with the agent's full information, recent activity, and controls
+- **Drag nodes** to rearrange the layout and organize your view however makes sense to you
+- **Zoom and pan** to navigate large setups with many agents
+- **Scroll** to zoom in and out of the graph
+
+<Tip>
+Use Canvas View to get a bird's-eye view of complex multi-agent setups. It's especially helpful when you're running 5 or more agents and want to quickly see how they're all connected and what state they're in.
+</Tip>
+
+## When to Use Canvas View
+
+Canvas View is most useful when you want to:
+
+- Understand the relationship between agents and projects visually
+- Monitor many agents at once without switching tabs
+- Present your agent setup to teammates or collaborators
+- Debug issues by seeing which agents are connected to a problem project
+
+For day-to-day monitoring of a small number of agents, the [Dashboard](/features/dashboard) is usually sufficient. Canvas View shines as your setup grows.
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Dashboard" icon="chart-mixed" href="/features/dashboard">
+    The list-based view for monitoring agent activity.
+  </Card>
+  <Card title="Agent World" icon="gamepad" href="/features/world">
+    A fun, game-style way to visualize your agents.
+  </Card>
+</CardGroup>

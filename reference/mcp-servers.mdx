@@ -1,0 +1,39 @@
+---
+title: "MCP Servers Overview"
+description: "How Dorothy uses the Model Context Protocol to give agents superpowers"
+icon: "server"
+---
+
+## What is MCP?
+
+The **Model Context Protocol (MCP)** is an open standard that lets AI agents use external tools and services. Think of it like giving an agent hands — without MCP, an agent can only read and write code. With MCP, it can also manage tasks, send messages, store documents, and more.
+
+MCP works by exposing "tools" that agents can call during their work. Each tool has a name, a description, and a set of parameters. When an agent decides it needs to perform an action (like creating a task or sending a message), it calls the appropriate MCP tool, and Dorothy handles the rest.
+
+## How Dorothy Uses MCP
+
+Dorothy bundles **7 MCP servers** that automatically connect to your agents. Each server provides a focused set of tools for a specific domain. When you create and start an agent, these servers are available immediately — no setup required.
+
+This means your agents can do much more than just write code. They can coordinate with other agents, manage a task board, store research notes, send notifications, and even post to social media.
+
+## Built-in MCP Servers
+
+| Server | Purpose | Tools | Key Capabilities |
+|---|---|---|---|
+| [Orchestrator](/reference/mcp-orchestrator) | Agent management | 18+ | Create, start, and stop agents. Send messages between agents. Manage automations and scheduled tasks. |
+| [Kanban](/reference/mcp-kanban) | Task management | 8 | Create, move, assign, and complete tasks on the Kanban board. |
+| [Vault](/reference/mcp-vault) | Document storage | 9 | Create, search, and manage documents and folders. |
+| [Telegram](/reference/mcp-telegram) | Telegram messaging | 4 | Send text messages, photos, documents, and videos. |
+| [X / Twitter](/reference/mcp-x) | Social media posting | 3 | Post tweets, reply to tweets, and delete tweets. |
+| [SocialData](/reference/mcp-socialdata) | Social media reading | 5 | Search tweets, get user profiles, and read comments. |
+| [World](/reference/mcp-world) | Game world builder | 5 | Create and manage zones, NPCs, and sprites. |
+
+## External MCP Servers
+
+In addition to the built-in servers, you can connect **third-party MCP servers** to extend your agents' capabilities even further. This is done through the Settings page under the MCP section.
+
+External MCP servers follow the same protocol and appear alongside the built-in tools. This lets you integrate with any service that has an MCP server available.
+
+<Note>
+MCP servers run automatically in the background. You do not need to start, stop, or configure them manually. They connect to each agent as soon as it starts.
+</Note>

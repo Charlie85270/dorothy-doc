@@ -1,0 +1,130 @@
+---
+title: "Agent Management"
+description: "Create, configure, and control your AI coding agents"
+icon: "robot"
+---
+
+## What is an Agent?
+
+An agent in Dorothy is an **AI assistant running in its own terminal**. Think of it as a dedicated AI worker that you can talk to, give tasks, and monitor -- all from within Dorothy's interface. Each agent operates independently, so you can have several agents working on different tasks at the same time.
+
+Under the hood, Dorothy launches the CLI for your chosen AI provider (Claude Code, Codex, Gemini, or Ollama) inside an embedded terminal. You interact with the agent by typing prompts, and it responds just like it would in a regular terminal -- but with Dorothy's management layer on top.
+
+## Why Use Agents?
+
+<CardGroup cols={3}>
+  <Card title="Parallel Work" icon="bolt">
+    Run multiple agents on different tasks at the same time instead of waiting for one to finish before starting another.
+  </Card>
+  <Card title="Specialized Roles" icon="users-gear">
+    Assign different agents to different areas of your codebase -- one for frontend, one for backend, one for tests.
+  </Card>
+  <Card title="Full Visibility" icon="eye">
+    See every agent's output in real-time, check status at a glance, and review completed work from one place.
+  </Card>
+</CardGroup>
+
+## How to Create an Agent
+
+<Steps>
+  <Step title="Open the Agents page">
+    Click **Agents** in the sidebar to view your existing agents or create a new one.
+  </Step>
+  <Step title="Click 'New Agent'">
+    This opens the agent creation form.
+  </Step>
+  <Step title="Configure your agent">
+    Fill in the following fields:
+
+    | Field | Description | Required |
+    |-------|-------------|----------|
+    | **Name** | A friendly name for this agent (e.g., "Frontend Agent") | Yes |
+    | **Model** | The AI model to use -- Sonnet, Opus, or Haiku for Claude; or select another provider like Codex, Gemini, or Ollama | Yes |
+    | **Project Directory** | The folder on your Mac where this agent will work | Yes |
+    | **Skills** | Optional skills that define what this agent specializes in (e.g., "react", "testing", "python") | No |
+    | **Character / Personality** | Optional personality or system instructions for the agent | No |
+  </Step>
+  <Step title="Save">
+    Click **Create** to add the agent. It will appear in your agent list in an **idle** state, ready to receive its first task.
+  </Step>
+</Steps>
+
+## Agent Lifecycle
+
+Every agent moves through a series of states as it works:
+
+| State | What It Means |
+|-------|---------------|
+| **Idle** | The agent is created but not currently running. It is ready to receive a prompt. |
+| **Running** | The agent is actively processing a task. You can see its output in real-time. |
+| **Completed** | The agent has finished its task successfully. |
+| **Error** | Something went wrong during execution. Check the terminal output for details. |
+| **Waiting** | The agent is paused, waiting for your input or for another event. |
+
+## Starting an Agent
+
+To start an agent, open it from the agent list and type a prompt in the input field. For example:
+
+> "Refactor the authentication module to use JWT tokens instead of session cookies."
+
+The agent will switch to the **Running** state and begin working. You will see its output appear in the terminal in real-time.
+
+## Stopping a Running Agent
+
+If you need to stop an agent mid-task, click the **Stop** button in the agent's terminal view. The agent will be interrupted and return to an idle-like state. You can then start it again with a new prompt or send a follow-up.
+
+<Warning>
+  Stopping an agent mid-task may leave partially completed changes in your project directory. Review the agent's output to understand what was done before stopping.
+</Warning>
+
+## Sending Follow-Up Messages
+
+You do not need to create a new agent every time you want to refine or continue a task. While an agent is running (or after it completes), you can **send follow-up messages** to provide clarification, ask for changes, or give additional instructions.
+
+Simply type your message in the input field and press Enter. The agent will continue from where it left off, with full context of the previous conversation.
+
+## Viewing Agent Output
+
+Each agent has its own terminal view that shows everything the AI is doing in real-time:
+
+- Code it is writing or modifying
+- Commands it is running
+- Questions it is asking
+- Errors it encounters
+
+Click on any agent in the agent list to open its **detail view**, where you can see the full terminal output, the agent's current state, and its configuration.
+
+## Deleting an Agent
+
+To remove an agent you no longer need:
+
+1. Open the agent list
+2. Right-click the agent (or use the context menu)
+3. Select **Delete**
+
+<Note>
+  Deleting an agent removes it from Dorothy but does **not** undo any changes the agent made to your project files. Those changes remain on disk.
+</Note>
+
+## Tips and Best Practices
+
+<Accordion title="Use different agents for different tasks">
+  Instead of asking one agent to do everything, create specialized agents. For example:
+  - **"Frontend Agent"** working in your `/src/components` directory with React skills
+  - **"Backend Agent"** working in your `/src/api` directory with Node.js skills
+  - **"Test Agent"** focused on writing and running tests
+
+  This keeps each agent focused and avoids context overload.
+</Accordion>
+
+<Accordion title="Name your agents clearly">
+  Use descriptive names like "Auth Refactor" or "API Tests" rather than "Agent 1" or "Agent 2". This makes it much easier to track what each agent is doing when you have several running at once.
+</Accordion>
+
+<Accordion title="Assign skills for better task routing">
+  If you plan to use the [Kanban board](/features/kanban) or [Super Agent](/features/super-agent), adding skills to your agents helps Dorothy automatically assign the right work to the right agent.
+</Accordion>
+
+<Accordion title="Review output before moving on">
+  Always check an agent's terminal output after it completes a task. AI agents are powerful but not perfect -- a quick review catches issues early.
+</Accordion>

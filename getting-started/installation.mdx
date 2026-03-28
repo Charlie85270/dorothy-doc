@@ -1,0 +1,98 @@
+---
+title: "Installation"
+description: "Download and install Dorothy on your Mac"
+icon: "download"
+---
+
+## Recommended: Download the App
+
+This is the easiest way to install Dorothy and works for everyone -- no technical knowledge required.
+
+<Steps>
+  <Step title="Download Dorothy">
+    Go to [dorothyai.app](https://dorothyai.app/) and click the download button to get the latest version for your Mac.
+  </Step>
+
+  <Step title="Install the app">
+    Open the downloaded `.dmg` file. A window will appear showing the Dorothy icon and your Applications folder. **Drag the Dorothy icon into the Applications folder.** That's it -- Dorothy is now installed.
+  </Step>
+
+  <Step title="Launch Dorothy">
+    Open your Applications folder and double-click **Dorothy** to launch it.
+  </Step>
+</Steps>
+
+---
+
+## Build from Source (for Developers)
+
+If you want to run the latest development version or contribute to Dorothy, you can build it yourself.
+
+**Prerequisites:** [Node.js 20+](https://nodejs.org/) and npm must be installed.
+
+<Steps>
+  <Step title="Clone the repository">
+    ```bash
+    git clone https://github.com/Charlie85270/dorothy.git
+    cd dorothy
+    ```
+  </Step>
+
+  <Step title="Install dependencies">
+    ```bash
+    npm install
+    ```
+  </Step>
+
+  <Step title="Start in development mode">
+    ```bash
+    npm run electron:dev
+    ```
+
+    Dorothy will launch in development mode with hot-reloading enabled.
+  </Step>
+</Steps>
+
+<Tip>
+Building from source is only necessary if you want to modify Dorothy's code or test unreleased features. For normal use, downloading the app is simpler and recommended.
+</Tip>
+
+---
+
+## First Launch
+
+Here's what to expect the first time you open Dorothy:
+
+### 1. The main dashboard appears
+
+You'll see Dorothy's interface with sections for your agents, projects, and settings. It will be empty since you haven't created any agents yet.
+
+### 2. Set your CLI paths in Settings
+
+This is an important first step. Dorothy needs to know where your AI coding tools are installed on your computer.
+
+<Steps>
+  <Step title="Open Settings">
+    Click the **Settings** icon (gear icon) in the sidebar or navigation.
+  </Step>
+
+  <Step title="Configure CLI paths">
+    Under the AI provider section, you'll see fields for each supported CLI (Claude Code, Codex, Gemini CLI, Ollama). Enter the file path where each tool is installed, or use the browse button to locate it.
+  </Step>
+
+  <Step title="Save your settings">
+    Click **Save** to apply your changes.
+  </Step>
+</Steps>
+
+<Tip>
+If Claude Code is installed globally via npm, Dorothy usually detects it automatically. You may not need to set the path manually.
+</Tip>
+
+### 3. Log in to your CLI
+
+Make sure you're logged in to your CLI tool. For example, for Claude Code, run `claude` in your terminal and follow the login prompts to authenticate with your Claude Pro or Max subscription.
+
+<Note>
+Once your CLI paths are configured and you're logged in, you're ready to create your first agent. Head to the [Quickstart guide](/getting-started/quickstart) to get going in 5 minutes.
+</Note>

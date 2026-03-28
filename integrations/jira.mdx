@@ -1,0 +1,83 @@
+---
+title: "JIRA"
+description: "Process JIRA tickets automatically with AI agents"
+icon: "ticket"
+---
+
+Connect Dorothy to JIRA to automatically process tickets with AI agents. Dorothy supports both JIRA Cloud and self-hosted JIRA instances.
+
+## How It Works
+
+Dorothy polls your JIRA project for new or updated tickets matching your criteria. When a matching ticket is found, Dorothy starts an agent with a prompt that includes the ticket details.
+
+## Setting Up a JIRA Automation
+
+<Steps>
+  <Step title="Create a new automation">
+    Go to **Automations → New Automation** in Dorothy.
+  </Step>
+  <Step title="Select JIRA as the source">
+    Choose **JIRA** from the list of available automation sources.
+  </Step>
+  <Step title="Enter your JIRA domain">
+    Provide your JIRA domain:
+    - **JIRA Cloud**: `yourcompany.atlassian.net`
+    - **Self-hosted**: your JIRA server URL (e.g., `jira.yourcompany.com`)
+  </Step>
+  <Step title="Add your API token">
+    Enter your JIRA API token. For JIRA Cloud, create one at [id.atlassian.com/manage-profile/security/api-tokens](https://id.atlassian.com/manage-profile/security/api-tokens).
+  </Step>
+  <Step title="Specify the project and filter">
+    Enter the project key (e.g., `PROJ`) and an optional JQL filter to narrow which tickets trigger the automation.
+  </Step>
+  <Step title="Write your prompt template">
+    Write the prompt that will be sent to the agent. Use template variables to include ticket details:
+
+    | Variable | Description |
+    |----------|-------------|
+    | `{{title}}` | Ticket summary |
+    | `{{body}}` | Ticket description |
+    | `{{url}}` | Link to the ticket |
+    | `{{key}}` | JIRA ticket key (e.g., PROJ-123) |
+    | `{{assignee}}` | Who the ticket is assigned to |
+    | `{{priority}}` | Ticket priority |
+    | `{{status}}` | Current ticket status |
+  </Step>
+  <Step title="Set polling interval and save">
+    Choose how often Dorothy checks for new tickets, then save and enable the automation.
+  </Step>
+</Steps>
+
+## Output Actions
+
+Agents can update JIRA tickets directly through MCP tools. Available actions include:
+
+- **Adding comments** to tickets with progress updates or results
+- **Changing ticket status** (e.g., moving from "In Progress" to "Done")
+
+<Note>
+Your JIRA API token must have sufficient permissions to perform these actions. If the agent cannot update a ticket, check the token's permission scope.
+</Note>
+
+## Example JQL Filters
+
+| Goal | JQL Filter |
+|------|------------|
+| Only bug tickets | `issuetype = Bug` |
+| High priority items | `priority in (High, Highest)` |
+| Unassigned tickets | `assignee is EMPTY` |
+| Recently created | `created >= -1d` |
+| Specific status | `status = "To Do"` |
+| Combined filter | `issuetype = Bug AND priority = High AND status = "To Do"` |
+
+<Tip>
+Use JQL filters to target specific ticket types or priorities. This prevents Dorothy from processing every ticket in your project and lets you focus agents on the work that matters most.
+</Tip>
+
+<Accordion title="How do I create a JIRA API token?">
+  1. Go to [id.atlassian.com/manage-profile/security/api-tokens](https://id.atlassian.com/manage-profile/security/api-tokens)
+  2. Click **Create API token**
+  3. Give it a label (e.g., "Dorothy")
+  4. Click **Create** and copy the token immediately
+  5. Use your Atlassian email address as the username along with this token
+</Accordion>

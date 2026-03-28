@@ -1,0 +1,68 @@
+---
+title: "Slack Integration"
+description: "Control agents from your Slack workspace"
+icon: "hashtag"
+---
+
+Dorothy's Slack integration lets you interact with your AI agents directly from any Slack channel. Manage agents within your team's existing communication tool without switching contexts.
+
+## Why Use the Slack Bot?
+
+- **Stay in your workflow** -- control agents without leaving Slack
+- **Team visibility** -- everyone in the channel can see agent activity
+- **Familiar interface** -- use a tool your team already knows
+
+## Setting Up
+
+<Steps>
+  <Step title="Create a Slack app">
+    Go to [api.slack.com/apps](https://api.slack.com/apps) and click **Create New App**. Choose **From scratch** and give it a name (e.g., "Dorothy").
+  </Step>
+  <Step title="Add bot scopes">
+    Under **OAuth & Permissions**, add the following bot token scopes:
+    - `chat:write` -- allows the bot to send messages
+    - `app_mentions:read` -- allows the bot to respond when mentioned
+    - `channels:read` -- allows the bot to see channel info
+    - `im:read` -- allows direct messages
+    - `im:write` -- allows the bot to reply in direct messages
+  </Step>
+  <Step title="Install the app to your workspace">
+    Click **Install to Workspace** and authorize the app. This grants the permissions you configured.
+  </Step>
+  <Step title="Copy your credentials">
+    Copy the **Bot User OAuth Token** from the OAuth & Permissions page, and the **Signing Secret** from the Basic Information page.
+  </Step>
+  <Step title="Configure Dorothy">
+    In Dorothy, go to **Settings → Slack** and paste the Bot Token and Signing Secret into the corresponding fields.
+  </Step>
+  <Step title="Invite the bot to a channel">
+    In Slack, go to the channel where you want to use Dorothy and type `/invite @Dorothy` (or whatever you named your bot).
+  </Step>
+</Steps>
+
+## Using the Bot
+
+Mention the bot by name to interact with your agents:
+
+| Action | Example |
+|--------|---------|
+| Check agent status | `@Dorothy status` |
+| Start an agent | `@Dorothy start myagent Fix the login bug` |
+| Stop an agent | `@Dorothy stop myagent` |
+| Send a message to an agent | `@Dorothy ask myagent What's your progress?` |
+
+The bot will reply in the same channel with the agent's response or status update.
+
+## Agent-to-Slack Messaging
+
+Agents can send messages **to** Slack channels using MCP tools. This is useful for posting progress updates, results, or alerts directly into your team's channels.
+
+For details on available MCP tools, see the [Orchestrator MCP reference](/reference/mcp-orchestrator).
+
+<Tip>
+Create a dedicated **#dorothy** channel for agent communications. This keeps agent messages organized and prevents them from cluttering other channels.
+</Tip>
+
+<Note>
+The Slack bot supports the same core commands as the Telegram bot. If you are already familiar with the Telegram integration, the Slack bot will feel very similar.
+</Note>

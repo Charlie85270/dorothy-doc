@@ -1,0 +1,125 @@
+---
+title: "Multi-Agent Terminals"
+description: "Run and monitor multiple agents side-by-side"
+icon: "grid-2"
+---
+
+## What are Multi-Agent Terminals?
+
+Dorothy's multi-agent terminal view lets you **run and monitor 10+ AI agents simultaneously** on a single screen. Instead of switching between terminal windows or browser tabs, you see all your agents side-by-side in a grid layout with live output streaming from each one.
+
+This is Dorothy's core feature -- the reason it exists. Traditional AI coding workflows force you to work with one agent at a time. Dorothy removes that bottleneck entirely.
+
+## Why Use Multi-Agent Terminals?
+
+<CardGroup cols={2}>
+  <Card title="See Everything at Once" icon="grid-2">
+    Monitor all your agents on one screen. No more switching between windows to check if an agent finished or hit an error.
+  </Card>
+  <Card title="Massive Parallelism" icon="bolt">
+    Run frontend, backend, testing, and documentation agents simultaneously. Finish in 10 minutes what used to take an hour.
+  </Card>
+  <Card title="Organized by Project" icon="folder-open">
+    Use tabs to group agents by project. Keep your web app agents separate from your mobile app agents.
+  </Card>
+  <Card title="Broadcast Commands" icon="bullhorn">
+    Send the same instruction to multiple agents at once -- perfect for "commit your changes" or "run the tests."
+  </Card>
+</CardGroup>
+
+## How to Use the Terminal Grid
+
+### Opening the Grid View
+
+Navigate to the **Terminals** page from the sidebar. You will see all your running agents displayed in a grid layout, each in its own resizable panel.
+
+### Layout Presets
+
+Dorothy comes with built-in layout presets so you can quickly arrange your terminals:
+
+| Preset | Description |
+|--------|-------------|
+| **Single** | One agent takes up the full screen -- great for focused work |
+| **Dual** | Two agents side-by-side |
+| **Quad** | 2x2 grid for four agents |
+| **2x3** | Six agents in a 2-row, 3-column layout |
+| **Custom** | Drag panel edges to create your own arrangement |
+
+To switch presets, use the layout selector in the toolbar at the top of the terminal view.
+
+<Tip>
+  You can resize any panel by dragging its edges. Your custom layout is preserved until you switch to a different preset.
+</Tip>
+
+### Tab-Based Organization
+
+Tabs let you organize agents by project or workflow:
+
+- Each tab can hold a different set of agents
+- Switch between tabs to jump between projects instantly
+- Create a new tab for each project you are working on
+
+This keeps things clean when you are managing agents across multiple codebases.
+
+## Broadcast Input
+
+Broadcast input lets you **send the same message to multiple agents at once**. This is useful when you need all your agents to do the same thing:
+
+- "Commit your current changes"
+- "Stop what you are doing"
+- "Run the test suite"
+- "Summarize what you have done so far"
+
+To use broadcast:
+
+<Steps>
+  <Step title="Enable broadcast mode">
+    Click the **Broadcast** button in the terminal toolbar.
+  </Step>
+  <Step title="Select target agents">
+    Choose which agents should receive the message. You can select all or pick specific ones.
+  </Step>
+  <Step title="Type and send">
+    Type your message in the broadcast input field and press Enter. The message is sent to all selected agents simultaneously.
+  </Step>
+</Steps>
+
+## Context Menu Actions
+
+Right-click on any terminal panel to access quick actions:
+
+- **Maximize** -- expand this terminal to full screen
+- **Stop Agent** -- interrupt the running agent
+- **Clear Output** -- clear the terminal scrollback
+- **Copy Output** -- copy the terminal contents to your clipboard
+- **Open in Detail View** -- switch to the full agent detail page
+
+## Global Search
+
+Need to find something an agent said or did? Use **global search** to search across all terminal output at once.
+
+1. Press the search shortcut or click the search icon in the toolbar
+2. Type your search query
+3. Results are highlighted across all visible terminals, showing you exactly which agent produced the matching output
+
+<Tip>
+  Global search is especially useful when you have many agents running and you need to find which one encountered a specific error or completed a specific file change.
+</Tip>
+
+## Tips and Best Practices
+
+<Accordion title="Start with the Quad preset">
+  The 2x2 quad layout is a great default for most workflows. It gives you enough terminals to parallelize work without making each panel too small to read.
+</Accordion>
+
+<Accordion title="Group related agents in tabs">
+  Create one tab per project. For example, a "Web App" tab with frontend, backend, and test agents, and a "Mobile App" tab with its own set of agents. This prevents clutter.
+</Accordion>
+
+<Accordion title="Use broadcast for coordination">
+  When multiple agents are working on the same codebase, use broadcast to tell them all to pull the latest changes or to stop and wait. This helps avoid merge conflicts between agents.
+</Accordion>
+
+<Accordion title="Keep an eye on the grid">
+  One of the biggest advantages of the grid view is spotting problems early. If an agent turns red (error state), you can address it immediately instead of discovering the issue later.
+</Accordion>

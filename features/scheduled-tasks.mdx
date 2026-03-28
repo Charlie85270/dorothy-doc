@@ -1,0 +1,155 @@
+---
+title: "Scheduled Tasks"
+description: "Run agents on a recurring schedule using cron"
+icon: "clock"
+---
+
+## What are Scheduled Tasks?
+
+Scheduled tasks are agents that **run automatically at specific times**, on a recurring schedule. You set up a task once, and Dorothy handles the rest -- launching the agent, running the prompt, and saving the output every time the schedule triggers.
+
+This is perfect for repetitive work that needs to happen regularly without you remembering to do it.
+
+## Why Use Scheduled Tasks?
+
+<CardGroup cols={2}>
+  <Card title="Set It and Forget It" icon="clock">
+    Configure a task once, and it runs on autopilot. No need to remember to kick off daily reviews or weekly updates.
+  </Card>
+  <Card title="Consistent Quality" icon="check">
+    The same prompt runs every time, so you get consistent, repeatable results across all runs.
+  </Card>
+  <Card title="Off-Hours Work" icon="moon">
+    Schedule heavy tasks for nights or weekends when they will not interrupt your workflow.
+  </Card>
+  <Card title="Full History" icon="clock-rotate-left">
+    Dorothy keeps logs of every run, so you can review past results and spot trends over time.
+  </Card>
+</CardGroup>
+
+## Use Cases
+
+| Task | Schedule | What the Agent Does |
+|------|----------|---------------------|
+| Daily code review | Every morning at 9 AM | Reviews all commits from the past 24 hours and writes a summary |
+| Weekly dependency update | Every Monday at 8 AM | Checks for outdated packages, updates them, and runs the test suite |
+| Nightly test run | Every night at midnight | Runs the full test suite and reports any failures |
+| Monthly report | First of every month | Generates a report on code quality, test coverage, and technical debt |
+| Periodic security scan | Every 6 hours | Scans dependencies for known vulnerabilities |
+
+## Cron Expressions Explained
+
+Scheduled tasks use **cron expressions** to define when they run. A cron expression has five parts:
+
+```
+minute  hour  day-of-month  month  day-of-week
+```
+
+Each part can be a specific number, `*` (meaning "every"), or a pattern.
+
+### Common Examples
+
+| Cron Expression | Meaning |
+|----------------|---------|
+| `0 9 * * *` | Every day at 9:00 AM |
+| `0 9 * * 1` | Every Monday at 9:00 AM |
+| `0 */2 * * *` | Every 2 hours (at the top of the hour) |
+| `30 8 1 * *` | First of every month at 8:30 AM |
+| `0 0 * * *` | Every day at midnight |
+| `0 9 * * 1-5` | Every weekday (Mon--Fri) at 9:00 AM |
+| `0 18 * * 5` | Every Friday at 6:00 PM |
+| `*/30 * * * *` | Every 30 minutes |
+
+<Tip>
+  If you are not familiar with cron syntax, there are free online tools like [crontab.guru](https://crontab.guru) that let you build and verify cron expressions visually.
+</Tip>
+
+## Creating a Scheduled Task
+
+<Steps>
+  <Step title="Open Scheduled Tasks">
+    Click **Scheduled Tasks** in the sidebar (or navigate from the Automations section).
+  </Step>
+  <Step title="Click 'New Scheduled Task'">
+    The scheduled task form opens.
+  </Step>
+  <Step title="Configure the task">
+    Fill in the following:
+
+    | Field | Description |
+    |-------|-------------|
+    | **Name** | A descriptive name (e.g., "Daily Code Review") |
+    | **Agent** | Select which agent should run, or create a new one |
+    | **Prompt** | The instructions the agent will receive each time it runs |
+    | **Cron Expression** | When the task should run (see examples above) |
+    | **Enabled** | Toggle to activate or deactivate the schedule |
+  </Step>
+  <Step title="Save">
+    Click **Save** to create the scheduled task. Dorothy will run it at the next matching time according to your cron expression.
+  </Step>
+</Steps>
+
+## macOS Integration
+
+Dorothy uses **macOS launchd** (the system's built-in scheduler) to manage scheduled tasks. This means:
+
+- Tasks run even if you quit and reopen Dorothy (as long as your Mac is on)
+- The schedule is managed at the system level, not just inside the app
+- Tasks survive app restarts and updates
+
+<Note>
+  Your Mac needs to be powered on and awake for scheduled tasks to run. If your Mac is asleep or shut down when a task is scheduled, it will not run until the next scheduled time.
+</Note>
+
+## Viewing Task Logs
+
+Dorothy keeps a log of every scheduled task run, so you can:
+
+- See when each run started and finished
+- Read the full agent output from each run
+- Check whether the run completed successfully or encountered errors
+- Compare results across multiple runs to spot trends
+
+To view logs, open the scheduled task and click the **Logs** tab.
+
+## Editing and Deleting Tasks
+
+### Editing
+
+Open an existing scheduled task and modify any field -- the name, prompt, cron expression, or assigned agent. Changes take effect on the next scheduled run.
+
+### Deleting
+
+To delete a scheduled task:
+
+1. Open the scheduled task
+2. Click **Delete**
+3. Confirm the deletion
+
+This removes both the task and its launchd schedule. Past logs are preserved for your reference.
+
+## Tips and Best Practices
+
+<Accordion title="Start with simple schedules">
+  Begin with a daily or weekly schedule and make sure everything works before creating more complex cron expressions. A daily 9 AM task (`0 9 * * *`) is a great first test.
+</Accordion>
+
+<Accordion title="Test with short intervals first">
+  When building a new scheduled task, temporarily set the cron to run every few minutes (`*/5 * * * *`) so you can quickly verify it works. Then change it to the real schedule once you are satisfied.
+</Accordion>
+
+<Accordion title="Write self-contained prompts">
+  Your scheduled task prompt should contain everything the agent needs to complete the task. Unlike interactive sessions, there is no one around to answer follow-up questions when a scheduled task runs at 3 AM.
+</Accordion>
+
+<Accordion title="Review logs regularly">
+  Check your task logs periodically to make sure scheduled tasks are still producing good results. Requirements and codebases change over time, so prompts may need updating.
+</Accordion>
+
+<Accordion title="Combine with notifications">
+  Use [Telegram](/integrations/telegram) or [Slack](/integrations/slack) integrations so your scheduled tasks send you a summary when they complete. This way you know the task ran without having to open Dorothy and check the logs.
+</Accordion>
+
+<Warning>
+  Scheduled tasks consume the same API credits as interactive agent sessions. A task that runs every 30 minutes will use significantly more credits than one that runs daily. Keep this in mind when setting short intervals.
+</Warning>

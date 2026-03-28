@@ -1,0 +1,103 @@
+---
+title: "World Builder Tools"
+description: "MCP tools for managing Dorothy's game world"
+icon: "gamepad"
+---
+
+The World Builder MCP server lets agents create and manage zones in Dorothy's built-in game world (ClaudeMon). Each zone is a tile-based area that can contain NPCs with dialogue, signs with messages, and custom sprites.
+
+This is a creative feature that lets your agents build interactive worlds as a fun way to visualize their work or create experiences.
+
+## Tools
+
+### `list_zones`
+
+List all game zones.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| — | — | — | No parameters required |
+
+**When to use:** When an agent needs to see what zones already exist before creating or modifying one.
+
+---
+
+### `create_zone`
+
+Create a new game zone.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | Display name for the zone |
+| `theme` | string | No | Visual theme for the zone |
+| `width` | number | No | Zone width in tiles |
+| `height` | number | No | Zone height in tiles |
+
+**When to use:** When an agent wants to create a new area in the game world — for example, a forest, a town, or a dungeon.
+
+---
+
+### `delete_zone`
+
+Delete a game zone.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `id` | string | Yes | The zone ID |
+
+**When to use:** When a zone is no longer needed.
+
+---
+
+### `update_zone_npcs`
+
+Add or update NPCs (non-player characters) in a zone.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `zoneId` | string | Yes | The zone ID |
+| `npcs` | array | Yes | Array of NPC objects |
+
+Each NPC object contains:
+
+| Field | Type | Description |
+|---|---|---|
+| `name` | string | The NPC's display name |
+| `dialogue` | string | What the NPC says when interacted with |
+| `position` | object | Position with `x` and `y` coordinates |
+
+**When to use:** When an agent wants to populate a zone with characters that players can talk to.
+
+---
+
+### `update_zone_signs`
+
+Add or update signs and gravestones in a zone.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `zoneId` | string | Yes | The zone ID |
+| `signs` | array | Yes | Array of sign objects |
+
+Each sign object contains:
+
+| Field | Type | Description |
+|---|---|---|
+| `text` | string | The text displayed on the sign |
+| `position` | object | Position with `x` and `y` coordinates |
+
+**When to use:** When an agent wants to place readable signs or markers throughout a zone.
+
+---
+
+### `list_sprites`
+
+List all available sprite assets.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| — | — | — | No parameters required |
+
+Returns available character sprites and tile sprites that can be used when designing zones.
+
+**When to use:** When an agent needs to see what visual assets are available before building or updating a zone.
